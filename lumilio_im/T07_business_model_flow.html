@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ビジネスモデル | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.val-lg{font-size:17px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.val-xl{font-size:21px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lbl{font-size:7.5px;font-weight:300;color:var(--muted);letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+.hd-gold{font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:4px;padding-bottom:3px;border-bottom:1px solid var(--gold-border);}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">02 — Business Model</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">02</div><div class="st">ビジネスモデル</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 2.5% 1.4fr 2.5% 1fr;gap:0;flex:1;min-height:0;align-items:stretch;">
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div class="txt-sm" style="margin-bottom:0.5%;min-height:2.5%;">FBAへ約1ヶ月分を定期補充。国内就労支援施設への物流委託。</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--border);flex:1;padding:1.5%;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="font-size:7px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:0.4%;">SUPPLY</div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:1.2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">仕入・製造</div>
+          <div class="txt" style="flex:1;">中国製造代行会社経由で商品調達。金型・独占契約なし。再契約可能な柔軟な調達体制。</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="font-size:16px;color:var(--gold);font-weight:900;">&#8594;</div>
+      </div>
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div class="txt-sm" style="margin-bottom:0.5%;min-height:2.5%;">代表1名＋業務委託1名の超少人数・完全在宅運営。</div>
+        <div style="background:var(--cream);border:1px solid var(--gold);border-top:3px solid var(--gold);flex:1;padding:1.5%;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);letter-spacing:2px;margin-bottom:0.4%;">CORE BUSINESS</div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:1.2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">ブランド・商品管理</div>
+          <div class="txt" style="flex:1;">矯正フロス「フロストールン」等のオーラルケアブランドを運営。商標・医療機器届出取得済み。Amazon広告・ページ最適化で高評価維持。</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="font-size:16px;color:var(--gold);font-weight:900;">&#8594;</div>
+      </div>
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div class="txt-sm" style="margin-bottom:0.5%;min-height:2.5%;">Amazon単独で20〜30%の伸長余地あり。楽天・ドラッグストア卸は未開拓の成長機会。</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--border);flex:1;padding:1.5%;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="font-size:7px;font-weight:700;color:var(--muted);letter-spacing:2px;margin-bottom:0.4%;">DEMAND</div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:1.2%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">販売・マーケティング</div>
+          <div class="txt" style="flex:1;">Amazon（95%以上）・楽天市場でのEC販売。Amazon広告（スポンサープロダクト等）を中心に集客。直近3〜4ヶ月連続増収増益。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

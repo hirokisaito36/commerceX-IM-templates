@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バリュエーション | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:34px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:10px 36px 10px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-shrink:0;}
+.sn{font-size:11px;font-weight:900;color:var(--gold);}
+.st{font-size:12px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.sec-label{font-size:7.5px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.txt{font-size:8px;color:var(--dark);line-height:1.6;overflow:hidden;}
+.txt-sm{font-size:7px;color:var(--muted);line-height:1.5;overflow:hidden;}
+.tbl th{padding:3px 6px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.tbl th:not(:first-child){text-align:right;}
+.tbl th.center{text-align:center;}
+.tbl td{padding:3.5px 6px;font-size:7.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.tbl td:not(:first-child){text-align:right;}
+.tbl td.center{text-align:center;}
+.tbl tr.highlight{background:var(--cream);}
+.tbl tr.highlight td{font-weight:700;}
+.tbl tr.result{background:var(--black);}
+.tbl tr.result td{color:var(--gold-light);font-weight:700;font-size:8px;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">04 — Valuation</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">04</div><div class="st">バリュエーション</div><div class="sl"></div></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- 左カラム：マルチプル法 -->
+      <div style="display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+        <div class="sec-label">マルチプル法（EV/EBITDA倍率）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:35%;">項目</th>
+            <th class="center" style="width:21.7%;">Low</th>
+            <th class="center" style="width:21.7%;">Mid</th>
+            <th class="center" style="width:21.7%;">High</th>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>正常EBITDA</td>
+            <td colspan="3" style="text-align:center;font-weight:700;color:var(--gold);">約4,200万円</td>
+          </tr>
+          <tr>
+            <td>適用倍率</td>
+            <td class="center">4.0xx</td>
+            <td class="center">5.0xx</td>
+            <td class="center">6.0xx</td>
+          </tr>
+          <tr class="highlight">
+            <td>事業価値（EV）</td>
+            <td class="center">約1.68億円</td>
+            <td class="center">約2.10億円</td>
+            <td class="center">約2.52億円</td>
+          </tr>
+          <tr>
+            <td>（＋）現預金</td>
+            <td colspan="3" style="text-align:center;">約3,073万円</td>
+          </tr>
+          <tr>
+            <td>（−）有利子負債</td>
+            <td colspan="3" style="text-align:center;">0円（借入なし）</td>
+          </tr>
+          <tr>
+            <td>（±）その他調整</td>
+            <td colspan="3" style="text-align:center;">—</td>
+          </tr>
+          <tr class="result">
+            <td>株式価値</td>
+            <td class="center">約1.68億円</td>
+            <td class="center">約2.10億円</td>
+            <td class="center">約2.52億円</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- 類似業種選択 -->
+        <div class="sec-label" style="margin-top:4px;">類似業種比較（倍率根拠）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:40%;">類似業種・企業</th>
+            <th class="center" style="width:20%;">EV/EBITDA</th>
+            <th class="center" style="width:20%;">EV/売上</th>
+            <th class="center" style="width:20%;">備考</th>
+          </tr></thead>
+          <tbody>
+          <tr><td>Amazon特化EC企業A</td><td class="center">4.5x</td><td class="center">1.5x</td><td class="center">D2Cブランド・商標保有</td></tr>
+          <tr><td>オーラルケアD2C企業B</td><td class="center">5.2x</td><td class="center">1.8x</td><td class="center">医療機器届出・高成長</td></tr>
+          <tr><td>EC専業ブランド企業C</td><td class="center">4.0x</td><td class="center">1.2x</td><td class="center">Amazon依存・小規模</td></tr>
+          <tr><td>健康用品EC企業D</td><td class="center">6.0x</td><td class="center">2.0x</td><td class="center">複数チャネル・高成長</td></tr>
+          <tr class="highlight"><td>平均・中央値</td><td class="center">4.9x</td><td class="center">1.6x</td><td class="center">類似4社平均</td></tr>
+          </tbody>
+        </table>
+
+        <!-- 倍率選定の補足 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:5px 8px;overflow:hidden;flex:1;margin-top:4px;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">倍率選定の補足</div>
+          <div class="txt-sm" style="white-space:pre-line;">Amazon特化EC・D2Cブランドの類似取引事例（EBITDA倍率4〜6x）を参考。商標・医療機器届出・高成長トレンドを加味。</div>
+        </div>
+      </div>
+
+      <!-- 右カラム：年買法＋レンジ表示 -->
+      <div style="display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+        <div class="sec-label">年買法（時価純資産＋営業権）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:35%;">項目</th>
+            <th class="center" style="width:21.7%;">Low</th>
+            <th class="center" style="width:21.7%;">Mid</th>
+            <th class="center" style="width:21.7%;">High</th>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>修正純資産</td>
+            <td colspan="3" style="text-align:center;font-weight:700;color:var(--gold);">約3,000〜4,000万円</td>
+          </tr>
+          <tr>
+            <td>正常営業利益</td>
+            <td colspan="3" style="text-align:center;">約2,100万円</td>
+          </tr>
+          <tr>
+            <td>営業権年数</td>
+            <td class="center">3.3年年</td>
+            <td class="center">4.3年年</td>
+            <td class="center">5.3年年</td>
+          </tr>
+          <tr class="highlight">
+            <td>営業権</td>
+            <td class="center">約1.38億円</td>
+            <td class="center">約1.80億円</td>
+            <td class="center">約2.22億円</td>
+          </tr>
+          <tr class="result">
+            <td>株式価値</td>
+            <td class="center">約1.68億円</td>
+            <td class="center">約2.10億円</td>
+            <td class="center">約2.52億円</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- 総合レンジ -->
+        <div style="background:var(--black);padding:10px 14px;flex-shrink:0;">
+          <div style="font-size:7px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;margin-bottom:4px;">総合バリュエーションレンジ</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:11px;font-weight:700;color:var(--white);">1.68億円</div>
+            <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;position:relative;overflow:hidden;">
+              <div style="position:absolute;left:15%;right:15%;top:0;bottom:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;"></div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:var(--white);">2.52億円</div>
+          </div>
+          <div style="text-align:center;margin-top:4px;">
+            <span style="font-size:7px;color:rgba(255,255,255,0.4);">提示価格（Mid）</span>
+            <span style="font-size:14px;font-weight:900;color:var(--gold-light);margin-left:6px;">3億円（着地2億円目線）</span>
+          </div>
+        </div>
+
+        <!-- 前提条件 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:6px 8px;overflow:hidden;flex:1;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">バリュエーション前提条件</div>
+          <div class="txt-sm">EBITDA約4,200万円（6月決算見込み）をベースに、Amazon特化EC・D2Cブランドの類似取引倍率（4〜6x）を適用。商標・医療機器届出・直近増収増益トレンドを加味した評価。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

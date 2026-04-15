@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPI指標一覧 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:12px 48px 12px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+
+/* KPI Cards */
+.kpi-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  flex:1;min-height:0;overflow:hidden;
+}
+.kpi-card{
+  background:var(--surface);border:1px solid var(--border);
+  padding:16px 20px;display:flex;flex-direction:column;
+  justify-content:center;overflow:hidden;position:relative;
+}
+.kpi-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:var(--gold);
+}
+.kpi-label{font-size:8px;font-weight:500;color:var(--muted);letter-spacing:0.5px;margin-bottom:4px;}
+.kpi-value{font-size:28px;font-weight:900;color:var(--gold);line-height:1.2;margin-bottom:4px;}
+.kpi-change{font-size:9px;font-weight:500;color:var(--dark);margin-bottom:6px;}
+.kpi-desc{font-size:7.5px;color:var(--muted);line-height:1.5;}
+
+/* 3つの場合のレイアウト用コメント：
+   KPIが3つの場合は、4つ目のkpi-cardのdivを削除してください。
+   grid-template-columnsはrepeat(2,1fr)のままで、
+   3つ目のカードが下段左に配置されます。
+   もしくは3カラムにしたい場合は
+   grid-template-columns: repeat(3,1fr) に変更してください。
+*/
+
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">03 — KPI Metrics</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">03</div><div class="st">KPI指標一覧</div><div class="sl"></div></div>
+
+    <div class="kpi-grid">
+      <!-- KPI 1 -->
+      <div class="kpi-card">
+        <div class="kpi-label">年間売上高</div>
+        <div class="kpi-value">約1.25億円</div>
+        <div class="kpi-change">前期比+39%</div>
+        <div class="kpi-desc">Amazon（安野デンタル・安野製薬）を中心に成長中。</div>
+      </div>
+      <!-- KPI 2 -->
+      <div class="kpi-card">
+        <div class="kpi-label">EBITDA（見込み）</div>
+        <div class="kpi-value">約4,200万円</div>
+        <div class="kpi-change">EBITDA率 約34%</div>
+        <div class="kpi-desc">広告費最適化により利益率が急改善。</div>
+      </div>
+      <!-- KPI 3 -->
+      <div class="kpi-card">
+        <div class="kpi-label">Amazon売上比率</div>
+        <div class="kpi-value">95%以上</div>
+        <div class="kpi-change">楽天は5%未満</div>
+        <div class="kpi-desc">Amazon依存が高いが、伸長余地20〜30%あり。</div>
+      </div>
+      <!-- KPI 4（不要な場合はこのdivを削除） -->
+      <div class="kpi-card">
+        <div class="kpi-label">直近月次利益</div>
+        <div class="kpi-value">+50万円（前月比）</div>
+        <div class="kpi-change">3〜4ヶ月連続増益</div>
+        <div class="kpi-desc">直近トレンドは強く、6月決算に向けて加速中。</div>
+      </div>
+    </div>
+
+    <!-- 補足メモ -->
+    <div style="background:var(--cream);border:1px solid var(--gold-border);padding:6px 10px;margin-top:8px;flex-shrink:0;">
+      <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">KPI補足・定義</div>
+      <div class="txt-sm">※2026年6月期見込み値。試算表（〜3月確定）ベース。</div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

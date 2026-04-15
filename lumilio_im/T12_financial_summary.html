@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>財務サマリー | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:34px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:10px 36px 10px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-shrink:0;}
+.sn{font-size:11px;font-weight:900;color:var(--gold);}
+.st{font-size:12px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.sec-label{font-size:7.5px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.txt{font-size:8px;color:var(--dark);line-height:1.6;overflow:hidden;}
+.txt-sm{font-size:7px;color:var(--muted);line-height:1.5;overflow:hidden;}
+/* PL table */
+.pl-tbl th{padding:2.5px 5px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.pl-tbl th:not(:first-child){text-align:right;}
+.pl-tbl td{padding:2.5px 5px;font-size:7.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.pl-tbl td:not(:first-child){text-align:right;}
+.pl-tbl tr.highlight{background:var(--cream);}
+.pl-tbl tr.highlight td{font-weight:700;}
+.pl-tbl tr.adj{background:#FFF3D0;}
+.pl-tbl tr.adj td{font-weight:700;color:var(--gold);}
+.pl-tbl td.gold{color:var(--gold);}
+.pl-tbl th.gold{color:var(--gold-light);}
+/* BS table */
+.bs-tbl th{padding:2.5px 5px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.bs-tbl th:not(:first-child){text-align:right;}
+.bs-tbl td{padding:2.5px 5px;font-size:7.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.bs-tbl td:not(:first-child){text-align:right;}
+.bs-tbl tr.highlight{background:var(--cream);}
+.bs-tbl tr.highlight td{font-weight:700;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">04 — Financial Summary</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">04</div><div class="st">財務サマリー</div><div class="sl"></div></div>
+
+    <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:12px;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- 左カラム：3期PL -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div class="sec-label">損益計算書（直近3期）</div>
+        <table class="pl-tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:28%;">科目</th>
+            <th style="width:24%;">2024年6月期</th>
+            <th style="width:24%;">2025年6月期</th>
+            <th class="gold" style="width:24%;">2026年6月期（見込み）</th>
+          </tr></thead>
+          <tbody>
+          <tr style="background:var(--surface);">
+            <td>売上高</td><td>{{revenue_y1}}</td><td>{{revenue_y2}}</td><td class="gold">{{revenue_y3}}</td>
+          </tr>
+          <tr>
+            <td>売上原価</td><td>{{cogs_y1}}</td><td>{{cogs_y2}}</td><td class="gold">{{cogs_y3}}</td>
+          </tr>
+          <tr class="highlight">
+            <td>売上総利益</td><td>{{gross_profit_y1}}</td><td>{{gross_profit_y2}}</td><td class="gold">{{gross_profit_y3}}</td>
+          </tr>
+          <tr>
+            <td>販管費</td><td>{{sga_y1}}</td><td>{{sga_y2}}</td><td class="gold">{{sga_y3}}</td>
+          </tr>
+          <tr class="highlight">
+            <td>営業利益</td><td>{{op_income_y1}}</td><td>{{op_income_y2}}</td><td class="gold">{{op_income_y3}}</td>
+          </tr>
+          <tr class="adj">
+            <td>修正後営業利益</td><td>{{adj_op_income_y1}}</td><td>{{adj_op_income_y2}}</td><td>{{adj_op_income_y3}}</td>
+          </tr>
+          <tr class="adj">
+            <td>修正後EBITDA</td><td>{{adj_ebitda_y1}}</td><td>{{adj_ebitda_y2}}</td><td>{{adj_ebitda_y3}}</td>
+          </tr>
+          <tr class="highlight">
+            <td>経常利益</td><td>{{ordinary_income_y1}}</td><td>{{ordinary_income_y2}}</td><td class="gold">{{ordinary_income_y3}}</td>
+          </tr>
+          <tr class="highlight">
+            <td>当期純利益</td><td>{{net_income_y1}}</td><td>{{net_income_y2}}</td><td class="gold">{{net_income_y3}}</td>
+          </tr>
+          <tr>
+            <td>減価償却費</td><td>{{depreciation_y1}}</td><td>{{depreciation_y2}}</td><td class="gold">{{depreciation_y3}}</td>
+          </tr>
+          <tr class="highlight">
+            <td>EBITDA</td><td>—</td><td>約200万円</td><td class="gold">約4,200万円（見込み）</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 右カラム：前期BS -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div class="sec-label">貸借対照表（{{bs_year}}）</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1;min-height:0;overflow:hidden;">
+          <!-- 資産の部 -->
+          <div style="overflow:hidden;">
+            <table class="bs-tbl">
+              <thead><tr><th colspan="2">資産の部</th></tr></thead>
+              <tbody>
+              <tr><td>現金預金</td><td>{{bs_cash}}</td></tr>
+              <tr><td>売掛金</td><td>{{bs_receivables}}</td></tr>
+              <tr><td>棚卸資産</td><td>{{bs_inventory}}</td></tr>
+              <tr><td>その他流動資産</td><td>{{bs_other_current}}</td></tr>
+              <tr class="highlight"><td>流動資産計</td><td>{{bs_current_total}}</td></tr>
+              <tr><td>有形固定資産</td><td>{{bs_tangible}}</td></tr>
+              <tr><td>無形固定資産</td><td>{{bs_intangible}}</td></tr>
+              <tr><td>投資その他</td><td>{{bs_investments}}</td></tr>
+              <tr class="highlight"><td>固定資産計</td><td>{{bs_fixed_total}}</td></tr>
+              <tr style="background:var(--black);"><td style="color:var(--white);font-weight:700;">資産合計</td><td style="color:var(--gold-light);font-weight:700;">{{bs_total_assets}}</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 負債・純資産の部 -->
+          <div style="overflow:hidden;">
+            <table class="bs-tbl">
+              <thead><tr><th colspan="2">負債・純資産の部</th></tr></thead>
+              <tbody>
+              <tr><td>買掛金</td><td>{{bs_payables}}</td></tr>
+              <tr><td>短期借入金</td><td>{{bs_short_debt}}</td></tr>
+              <tr><td>その他流動負債</td><td>{{bs_other_cl}}</td></tr>
+              <tr class="highlight"><td>流動負債計</td><td>{{bs_cl_total}}</td></tr>
+              <tr><td>長期借入金</td><td>{{bs_long_debt}}</td></tr>
+              <tr><td>その他固定負債</td><td>{{bs_other_ncl}}</td></tr>
+              <tr class="highlight"><td>固定負債計</td><td>{{bs_ncl_total}}</td></tr>
+              <tr style="background:var(--surface);"><td style="font-weight:700;">負債合計</td><td style="font-weight:700;">{{bs_total_liabilities}}</td></tr>
+              <tr><td>純資産</td><td>{{bs_equity}}</td></tr>
+              <tr style="background:var(--black);"><td style="color:var(--white);font-weight:700;">負債純資産合計</td><td style="color:var(--gold-light);font-weight:700;">{{bs_total_le}}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下部：修正項目メモ欄 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;flex-shrink:0;">
+      <div style="background:var(--cream);border:1px solid var(--gold-border);border-left:3px solid var(--gold);padding:5px 8px;overflow:hidden;">
+        <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">PL修正項目</div>
+        <div class="txt-sm" style="white-space:pre-line;">{{pl_adj_note}}</div>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--gold-border);border-left:3px solid var(--gold);padding:5px 8px;overflow:hidden;">
+        <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">BS修正項目</div>
+        <div class="txt-sm" style="white-space:pre-line;">{{bs_adj_note}}</div>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);padding:5px 8px;margin-top:4px;flex-shrink:0;overflow:hidden;">
+      <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">修正についての補足・根拠</div>
+      <div class="txt-sm" style="white-space:pre-line;">{{adj_supplementary_note}}</div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

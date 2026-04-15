@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>組織図 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:10px 48px 10px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.tbl th{padding:3px 5px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.tbl th.center{text-align:center;}
+.tbl td{padding:3px 5px;font-size:7.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.tbl td.center{text-align:center;}
+.tbl tr.highlight{background:var(--cream);}
+.tbl tr.highlight td{font-weight:700;}
+.org-line-v{width:1px;background:var(--border);flex-shrink:0;}
+.org-line-h{height:1px;background:var(--border);flex-shrink:0;}
+.kpi-box{background:var(--surface);border:1px solid var(--border);padding:5px 4px;text-align:center;}
+.kpi-label{font-size:6px;color:var(--muted);margin-bottom:1px;}
+.kpi-val{font-size:12px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">05 — Organization</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">05</div><div class="st">組織図・人員体制</div><div class="sl"></div></div>
+
+    <div style="display:grid;grid-template-columns:1fr 240px;gap:12px;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- 左カラム：組織図＋役職テーブル -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+
+        <!-- 組織図エリア -->
+        <div style="display:flex;flex-direction:column;align-items:center;padding:10px 0 8px;flex-shrink:0;">
+          <div style="background:var(--black);color:var(--white);padding:6px 28px;text-align:center;">
+            <div style="font-size:7px;color:rgba(255,255,255,0.5);font-weight:300;">代表取締役・100%株主</div>
+            <div style="font-size:12px;font-weight:700;">大瀬 浩由</div>
+          </div>
+          <div class="org-line-v" style="height:14px;"></div>
+          <div class="org-line-h" style="width:80%;"></div>
+          <div style="display:flex;gap:8px;justify-content:center;width:90%;margin-top:0;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div class="org-line-v" style="height:10px;"></div>
+              <div style="background:var(--cream);border:1px solid var(--gold);padding:6px 8px;text-align:center;width:100%;">
+                <div style="font-size:10px;font-weight:700;color:var(--dark);">経営・事業全般</div>
+                <div style="font-size:8px;color:var(--gold);font-weight:500;">1名（代表）名</div>
+              </div>
+              <div style="font-size:7px;color:var(--muted);margin-top:3px;line-height:1.4;text-align:center;">Amazon広告運用・商品管理・仕入・財務・戦略立案をすべて代表が担当。</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div class="org-line-v" style="height:10px;"></div>
+              <div style="background:var(--cream);border:1px solid var(--gold);padding:6px 8px;text-align:center;width:100%;">
+                <div style="font-size:10px;font-weight:700;color:var(--dark);">業務委託（外注）</div>
+                <div style="font-size:8px;color:var(--gold);font-weight:500;">1名名</div>
+              </div>
+              <div style="font-size:7px;color:var(--muted);margin-top:3px;line-height:1.4;text-align:center;">新潟在住。月6万円。具体的業務内容は要確認。継続意思・移管条件の確認が必要。</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div class="org-line-v" style="height:10px;"></div>
+              <div style="background:var(--cream);border:1px solid var(--gold);padding:6px 8px;text-align:center;width:100%;">
+                <div style="font-size:10px;font-weight:700;color:var(--dark);">物流（外部委託）</div>
+                <div style="font-size:8px;color:var(--gold);font-weight:500;">—名</div>
+              </div>
+              <div style="font-size:7px;color:var(--muted);margin-top:3px;line-height:1.4;text-align:center;">国内就労支援施設に物流を委託。FBAへ約1ヶ月分を定期補充。</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+              <div class="org-line-v" style="height:10px;"></div>
+              <div style="background:var(--cream);border:1px solid var(--gold);padding:6px 8px;text-align:center;width:100%;">
+                <div style="font-size:10px;font-weight:700;color:var(--dark);">製造（外部委託）</div>
+                <div style="font-size:8px;color:var(--gold);font-weight:500;">—名</div>
+              </div>
+              <div style="font-size:7px;color:var(--muted);margin-top:3px;line-height:1.4;text-align:center;">中国製造代行会社経由で商品調達。金型・独占契約なし。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 役職別テーブル -->
+        <div style="margin-top:4px;flex-shrink:0;">
+          <div style="font-size:7.5px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;">役職別 人員・役割</div>
+          <table class="tbl">
+            <thead><tr>
+              <th style="width:16%;">区分</th>
+              <th class="center" style="width:10%;">人数</th>
+              <th style="width:74%;">主な役割・業務内容</th>
+            </tr></thead>
+            <tbody>
+            <tr><td style="font-weight:700;">社長</td><td class="center">1名</td><td>代表取締役</td></tr>
+            <tr><td style="font-weight:700;">役員</td><td class="center">1名（代表のみ）</td><td>役員</td></tr>
+            <tr><td style="font-weight:700;">正社員</td><td class="center">0名</td><td>正社員</td></tr>
+            <tr><td style="font-weight:700;">業務委託</td><td class="center">1名（新潟・月6万円）</td><td>業務委託</td></tr>
+            <tr class="highlight"><td style="font-weight:700;">合計</td><td class="center">2名（代表＋業務委託）</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- キーマンリスク・引継ぎ -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;flex:1;min-height:0;overflow:hidden;">
+          <div style="background:var(--surface);border:1px solid var(--border);padding:5px 6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;border-bottom:1px solid var(--gold-border);padding-bottom:2px;">キーマンリスク</div>
+            <div class="txt-sm" style="flex:1;">代表1名に業務が集中。引き継ぎSOP整備が必須。広告・FBA補充・ページ改善の標準化が急務。</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);padding:5px 6px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;border-bottom:1px solid var(--gold-border);padding-bottom:2px;">引継ぎ方針</div>
+            <div class="txt-sm" style="flex:1;">強い拘束は不可。出来高連動の限定伴走（広告最適化・在庫改善等）なら可。週5・8時間拘束は不可。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右カラム：従業員情報 -->
+      <div style="display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+        <div style="font-size:7.5px;font-weight:700;color:var(--gold);letter-spacing:1px;">従業員情報</div>
+
+        <div style="background:var(--black);padding:8px 10px;text-align:center;flex-shrink:0;">
+          <div style="font-size:6.5px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;">総従業員数</div>
+          <div style="font-size:20px;font-weight:700;color:var(--gold-light);line-height:1.3;">2名（代表＋業務委託）名</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;flex-shrink:0;">
+          <div class="kpi-box"><div class="kpi-label">平均年齢</div><div class="kpi-val">—</div></div>
+          <div class="kpi-box"><div class="kpi-label">平均勤続年数</div><div class="kpi-val">—</div></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;flex-shrink:0;">
+          <div class="kpi-box"><div class="kpi-label">正社員比率</div><div class="kpi-val">業務委託100%</div></div>
+          <div class="kpi-box"><div class="kpi-label">離職率</div><div class="kpi-val">—</div></div>
+        </div>
+
+        <!-- 補足メモ -->
+        <div style="background:var(--cream);border:1px solid var(--gold-border);border-left:3px solid var(--gold);padding:6px 8px;overflow:hidden;flex:1;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">従業員に関する補足</div>
+          <div class="txt-sm" style="white-space:pre-line;">正社員なし。雇用関係なし。未払い残業リスクなし。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
