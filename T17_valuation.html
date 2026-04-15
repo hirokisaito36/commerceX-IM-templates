@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バリュエーション | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:34px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:10px 36px 10px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-shrink:0;}
+.sn{font-size:11px;font-weight:900;color:var(--gold);}
+.st{font-size:12px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.sec-label{font-size:7.5px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.txt{font-size:8px;color:var(--dark);line-height:1.6;overflow:hidden;}
+.txt-sm{font-size:7px;color:var(--muted);line-height:1.5;overflow:hidden;}
+.tbl th{padding:3px 6px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.tbl th:not(:first-child){text-align:right;}
+.tbl th.center{text-align:center;}
+.tbl td{padding:3.5px 6px;font-size:7.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.tbl td:not(:first-child){text-align:right;}
+.tbl td.center{text-align:center;}
+.tbl tr.highlight{background:var(--cream);}
+.tbl tr.highlight td{font-weight:700;}
+.tbl tr.result{background:var(--black);}
+.tbl tr.result td{color:var(--gold-light);font-weight:700;font-size:8px;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">04 — Valuation</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">04</div><div class="st">バリュエーション</div><div class="sl"></div></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- 左カラム：マルチプル法 -->
+      <div style="display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+        <div class="sec-label">マルチプル法（EV/EBITDA倍率）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:35%;">項目</th>
+            <th class="center" style="width:21.7%;">Low</th>
+            <th class="center" style="width:21.7%;">Mid</th>
+            <th class="center" style="width:21.7%;">High</th>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>正常EBITDA</td>
+            <td colspan="3" style="text-align:center;font-weight:700;color:var(--gold);">{{normalized_ebitda}}</td>
+          </tr>
+          <tr>
+            <td>適用倍率</td>
+            <td class="center">{{multiple_low}}x</td>
+            <td class="center">{{multiple_mid}}x</td>
+            <td class="center">{{multiple_high}}x</td>
+          </tr>
+          <tr class="highlight">
+            <td>事業価値（EV）</td>
+            <td class="center">{{ev_low}}</td>
+            <td class="center">{{ev_mid}}</td>
+            <td class="center">{{ev_high}}</td>
+          </tr>
+          <tr>
+            <td>（＋）現預金</td>
+            <td colspan="3" style="text-align:center;">{{val_cash}}</td>
+          </tr>
+          <tr>
+            <td>（−）有利子負債</td>
+            <td colspan="3" style="text-align:center;">{{val_debt}}</td>
+          </tr>
+          <tr>
+            <td>（±）その他調整</td>
+            <td colspan="3" style="text-align:center;">{{val_other_adj}}</td>
+          </tr>
+          <tr class="result">
+            <td>株式価値</td>
+            <td class="center">{{equity_value_low}}</td>
+            <td class="center">{{equity_value_mid}}</td>
+            <td class="center">{{equity_value_high}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- 類似業種選択 -->
+        <div class="sec-label" style="margin-top:4px;">類似業種比較（倍率根拠）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:40%;">類似業種・企業</th>
+            <th class="center" style="width:20%;">EV/EBITDA</th>
+            <th class="center" style="width:20%;">EV/売上</th>
+            <th class="center" style="width:20%;">備考</th>
+          </tr></thead>
+          <tbody>
+          <tr><td>{{comp_1_name}}</td><td class="center">{{comp_1_ebitda_multiple}}</td><td class="center">{{comp_1_revenue_multiple}}</td><td class="center">{{comp_1_note}}</td></tr>
+          <tr><td>{{comp_2_name}}</td><td class="center">{{comp_2_ebitda_multiple}}</td><td class="center">{{comp_2_revenue_multiple}}</td><td class="center">{{comp_2_note}}</td></tr>
+          <tr><td>{{comp_3_name}}</td><td class="center">{{comp_3_ebitda_multiple}}</td><td class="center">{{comp_3_revenue_multiple}}</td><td class="center">{{comp_3_note}}</td></tr>
+          <tr><td>{{comp_4_name}}</td><td class="center">{{comp_4_ebitda_multiple}}</td><td class="center">{{comp_4_revenue_multiple}}</td><td class="center">{{comp_4_note}}</td></tr>
+          <tr class="highlight"><td>平均・中央値</td><td class="center">{{comp_avg_ebitda}}</td><td class="center">{{comp_avg_revenue}}</td><td class="center">{{comp_avg_note}}</td></tr>
+          </tbody>
+        </table>
+
+        <!-- 倍率選定の補足 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:5px 8px;overflow:hidden;flex:1;margin-top:4px;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">倍率選定の補足</div>
+          <div class="txt-sm" style="white-space:pre-line;">{{multiple_rationale}}</div>
+        </div>
+      </div>
+
+      <!-- 右カラム：年買法＋レンジ表示 -->
+      <div style="display:flex;flex-direction:column;gap:6px;overflow:hidden;">
+        <div class="sec-label">年買法（時価純資産＋営業権）</div>
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:35%;">項目</th>
+            <th class="center" style="width:21.7%;">Low</th>
+            <th class="center" style="width:21.7%;">Mid</th>
+            <th class="center" style="width:21.7%;">High</th>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>修正純資産</td>
+            <td colspan="3" style="text-align:center;font-weight:700;color:var(--gold);">{{adjusted_net_assets}}</td>
+          </tr>
+          <tr>
+            <td>正常営業利益</td>
+            <td colspan="3" style="text-align:center;">{{normalized_op_income}}</td>
+          </tr>
+          <tr>
+            <td>営業権年数</td>
+            <td class="center">{{goodwill_years_low}}年</td>
+            <td class="center">{{goodwill_years_mid}}年</td>
+            <td class="center">{{goodwill_years_high}}年</td>
+          </tr>
+          <tr class="highlight">
+            <td>営業権</td>
+            <td class="center">{{goodwill_low}}</td>
+            <td class="center">{{goodwill_mid}}</td>
+            <td class="center">{{goodwill_high}}</td>
+          </tr>
+          <tr class="result">
+            <td>株式価値</td>
+            <td class="center">{{nenbai_low}}</td>
+            <td class="center">{{nenbai_mid}}</td>
+            <td class="center">{{nenbai_high}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- 総合レンジ -->
+        <div style="background:var(--black);padding:10px 14px;flex-shrink:0;">
+          <div style="font-size:7px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;margin-bottom:4px;">総合バリュエーションレンジ</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="font-size:11px;font-weight:700;color:var(--white);">{{range_low}}</div>
+            <div style="flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;position:relative;overflow:hidden;">
+              <div style="position:absolute;left:15%;right:15%;top:0;bottom:0;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;"></div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:var(--white);">{{range_high}}</div>
+          </div>
+          <div style="text-align:center;margin-top:4px;">
+            <span style="font-size:7px;color:rgba(255,255,255,0.4);">提示価格（Mid）</span>
+            <span style="font-size:14px;font-weight:900;color:var(--gold-light);margin-left:6px;">{{asking_price}}</span>
+          </div>
+        </div>
+
+        <!-- 前提条件 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:6px 8px;overflow:hidden;flex:1;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:2px;">バリュエーション前提条件</div>
+          <div class="txt-sm">{{valuation_assumptions}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

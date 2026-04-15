@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>知的財産・許認可 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">04 — IP & Licenses</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">04</div><div class="st">知的財産・許認可</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;min-height:0;overflow:hidden;">
+      <!-- 左カラム：知的財産 -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">知的財産権</div>
+        <table style="flex:1;">
+          <thead>
+            <tr style="background:var(--black);">
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:28%;">種別</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:32%;">名称・番号</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:22%;">登録日</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:18%;">状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_1_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_1_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ip_1_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ip_1_status}}</span></td>
+            </tr>
+            <tr>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_2_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_2_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ip_2_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ip_2_status}}</span></td>
+            </tr>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_3_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_3_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ip_3_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ip_3_status}}</span></td>
+            </tr>
+            <tr>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_4_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_4_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ip_4_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ip_4_status}}</span></td>
+            </tr>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_5_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ip_5_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ip_5_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ip_5_status}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);padding:8px 12px;margin-top:8px;flex-shrink:0;">
+          <div style="font-size:7.5px;font-weight:700;color:var(--gold);margin-bottom:2px;">知財に関する補足</div>
+          <div class="txt-sm">{{ip_notes}}</div>
+        </div>
+      </div>
+      <!-- 右カラム：許認可・契約 -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">許認可・届出</div>
+        <table>
+          <thead>
+            <tr style="background:var(--black);">
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:40%;">許認可名</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:30%;">取得日</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:30%;">有効期限</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{lic_1_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_1_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_1_expiry}}</td>
+            </tr>
+            <tr>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{lic_2_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_2_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_2_expiry}}</td>
+            </tr>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{lic_3_name}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_3_date}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{lic_3_expiry}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);margin-top:12px;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">主要契約・取引先</div>
+        <table style="flex:1;">
+          <thead>
+            <tr style="background:var(--black);">
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:30%;">契約先</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:30%;">契約種別</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:20%;">期間</th>
+              <th style="padding:5px 8px;font-size:7.5px;font-weight:500;color:var(--white);text-align:left;width:20%;">承継</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_1_party}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_1_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ct_1_term}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ct_1_transfer}}</span></td>
+            </tr>
+            <tr>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_2_party}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_2_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ct_2_term}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ct_2_transfer}}</span></td>
+            </tr>
+            <tr style="background:var(--surface);">
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_3_party}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);">{{ct_3_type}}</td>
+              <td style="padding:5px 8px;font-size:8px;color:var(--muted);border-bottom:1px solid var(--border-light);">{{ct_3_term}}</td>
+              <td style="padding:5px 8px;font-size:8px;border-bottom:1px solid var(--border-light);"><span style="background:var(--cream);color:var(--gold);padding:1px 6px;font-size:7px;font-weight:500;border-radius:2px;">{{ct_3_transfer}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

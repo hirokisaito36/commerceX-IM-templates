@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>損益計算書 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.val-lg{font-size:17px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.val-xl{font-size:21px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lbl{font-size:7.5px;font-weight:300;color:var(--muted);letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+.hd-gold{font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:4px;padding-bottom:3px;border-bottom:1px solid var(--gold-border);}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">03 — P/L Statement</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">03</div><div class="st">損益計算書（直近3期）</div><div class="sl"></div></div>
+    <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">
+      <table style="flex:1;">
+        <thead><tr style="background:var(--black);">
+          <th style="padding:0.6% 1.2%;text-align:left;font-size:7px;font-weight:500;color:var(--white);width:28%;">科目</th>
+          <th style="padding:0.6% 1.2%;text-align:right;font-size:7px;font-weight:500;color:var(--white);width:18%;">{{year_1}}</th>
+          <th style="padding:0.6% 1.2%;text-align:right;font-size:7px;font-weight:500;color:var(--white);width:18%;">{{year_2}}</th>
+          <th style="padding:0.6% 1.2%;text-align:right;font-size:7px;font-weight:500;color:var(--gold-light);width:18%;">{{year_3}}</th>
+          <th style="padding:0.6% 1.2%;text-align:right;font-size:7px;font-weight:500;color:var(--white);width:18%;">構成比</th>
+        </tr></thead>
+        <tbody>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">売上高</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{revenue_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{revenue_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{revenue_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{revenue_y3_pct}}</td>
+          </tr>
+          <tr style="">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">売上原価</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{cogs_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{cogs_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{cogs_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{cogs_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">売上総利益</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{gross_profit_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{gross_profit_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{gross_profit_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{gross_profit_y3_pct}}</td>
+          </tr>
+          <tr style="">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">役員報酬</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{exec_comp_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{exec_comp_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{exec_comp_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{exec_comp_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">人件費</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{labor_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{labor_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{labor_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{labor_y3_pct}}</td>
+          </tr>
+          <tr style="">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">広告宣伝費</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{advertising_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{advertising_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{advertising_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{advertising_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">地代家賃</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{rent_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{rent_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{rent_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{rent_y3_pct}}</td>
+          </tr>
+          <tr style="">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">その他販管費</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{other_sga_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{other_sga_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{other_sga_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{other_sga_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">販管費合計</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{total_sga_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{total_sga_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{total_sga_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{total_sga_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">営業利益</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{op_income_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{op_income_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{op_income_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{op_income_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">営業外収益</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_income_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_income_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_income_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_income_y3_pct}}</td>
+          </tr>
+          <tr style="">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;border-bottom:1px solid var(--border-light);width:28%;">営業外費用</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_expense_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_expense_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:300;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_expense_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{non_op_expense_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">経常利益</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{ordinary_income_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{ordinary_income_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{ordinary_income_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{ordinary_income_y3_pct}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:28%;">当期純利益</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{net_income_y1}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{net_income_y2}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{net_income_y3}}</td>
+            <td style="padding:0.55% 1.2%;font-size:7.5px;color:var(--muted);text-align:right;border-bottom:1px solid var(--border-light);width:18%;">{{net_income_y3_pct}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス紹介 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:0;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">08 — Our Services</div></div>
+  <div class="pc">
+
+    <!-- ヒーロー：コピー -->
+    <div style="background:var(--black);padding:28px 48px 24px;text-align:center;flex-shrink:0;">
+      <div style="font-size:8px;font-weight:700;color:var(--gold-light);letter-spacing:4px;margin-bottom:6px;">COMMERCEX M&A</div>
+      <div style="font-size:20px;font-weight:900;color:var(--white);letter-spacing:3px;line-height:1.4;">コマース業界をM&Aで豊かにする</div>
+      <div style="width:40px;height:2px;background:var(--gold);margin:12px auto 0;"></div>
+    </div>
+
+    <!-- サービス3カード -->
+    <div style="flex:1;padding:20px 48px 16px;display:flex;flex-direction:column;gap:12px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-height:0;">
+
+        <!-- サービス1：M&A後の運営支援 -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);padding:16px 14px;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="width:36px;height:36px;background:var(--cream);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:4px;letter-spacing:0.5px;">M&A後の運営支援サービス</div>
+          <div style="font-size:8px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:8px;">M&A成立後のPMI（統合プロセス）から、EC運営・物流・CS体制の構築まで、コマース事業の継続成長をワンストップで支援します。</div>
+          <div style="background:var(--cream);border:1px solid var(--gold-border);padding:6px 8px;flex-shrink:0;">
+            <div style="font-size:6.5px;color:var(--gold);font-weight:700;letter-spacing:0.5px;margin-bottom:2px;">URL</div>
+            <div style="font-size:8px;color:var(--gold);font-weight:500;word-break:break-all;">{{service_pmi_url}}</div>
+          </div>
+        </div>
+
+        <!-- サービス2：CommerceX AI -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);padding:16px 14px;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="width:36px;height:36px;background:var(--cream);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8.24 9.93A4 4 0 0 1 12 2"/><rect x="3" y="14" width="18" height="8" rx="2"/><path d="M7 14v-2"/><path d="M17 14v-2"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          </div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:4px;letter-spacing:0.5px;">CommerceX AI</div>
+          <div style="font-size:8px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:8px;">EC・小売業界に特化したAI支援サービス。商品分析、需要予測、広告最適化、顧客セグメンテーションなど、データドリブンな意思決定を実現します。</div>
+          <div style="background:var(--cream);border:1px solid var(--gold-border);padding:6px 8px;flex-shrink:0;">
+            <div style="font-size:6.5px;color:var(--gold);font-weight:700;letter-spacing:0.5px;margin-bottom:2px;">URL</div>
+            <div style="font-size:8px;color:var(--gold);font-weight:500;word-break:break-all;">{{service_ai_url}}</div>
+          </div>
+        </div>
+
+        <!-- サービス3：会社HP -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);padding:16px 14px;display:flex;flex-direction:column;overflow:hidden;">
+          <div style="width:36px;height:36px;background:var(--cream);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;margin-bottom:10px;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div style="font-size:11px;font-weight:900;color:var(--black);margin-bottom:4px;letter-spacing:0.5px;">会社HP</div>
+          <div style="font-size:8px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:8px;">CommerceX M&Aの会社概要、実績、チーム紹介、お問い合わせ先など、詳細情報は公式サイトをご覧ください。</div>
+          <div style="background:var(--cream);border:1px solid var(--gold-border);padding:6px 8px;flex-shrink:0;">
+            <div style="font-size:6.5px;color:var(--gold);font-weight:700;letter-spacing:0.5px;margin-bottom:2px;">URL</div>
+            <div style="font-size:8px;color:var(--gold);font-weight:500;word-break:break-all;">{{company_hp_url}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

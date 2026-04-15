@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CommerceX M&A — テンプレート一覧</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;
+  --black:#111111;--dark:#333333;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:#F5F5F3;color:var(--black);line-height:1.7;}
+.hero{background:var(--black);padding:clamp(24px,5vw,60px) clamp(16px,4vw,48px);text-align:center;}
+.hero h1{font-size:clamp(18px,3vw,32px);font-weight:900;color:var(--white);letter-spacing:2px;margin-bottom:8px;}
+.hero p{font-size:clamp(10px,1.5vw,14px);color:rgba(255,255,255,0.5);font-weight:300;letter-spacing:2px;}
+.hero .bar{width:48px;height:3px;background:var(--gold-light);margin:16px auto;}
+.container{max-width:1200px;margin:0 auto;padding:clamp(16px,3vw,40px) clamp(12px,2vw,24px);}
+.category{margin-bottom:clamp(24px,4vw,48px);}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:clamp(12px,2vw,24px);}
+.cat-header h2{font-size:clamp(14px,2vw,20px);font-weight:900;color:var(--gold);white-space:nowrap;}
+.cat-header span{font-size:clamp(9px,1.2vw,12px);color:var(--muted);font-weight:300;letter-spacing:2px;}
+.cat-header .line{flex:1;height:1px;background:var(--border);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(12px,2vw,20px);}
+.card{background:var(--white);border:1px solid var(--border);overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;cursor:pointer;text-decoration:none;color:inherit;display:block;}
+.card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.card-preview{width:100%;aspect-ratio:16/9;background:#CCCAC7;overflow:hidden;position:relative;}
+.card-preview iframe{width:200%;height:200%;transform:scale(0.5);transform-origin:top left;border:none;pointer-events:none;}
+.card-info{padding:clamp(10px,1.5vw,16px);}
+.card-tag{display:inline-block;font-size:clamp(7px,1vw,9px);font-weight:500;color:var(--gold);background:var(--cream);border:1px solid rgba(196,144,0,0.2);padding:2px 8px;letter-spacing:1px;margin-bottom:6px;}
+.card-id{font-size:clamp(9px,1.2vw,11px);color:var(--gold);font-weight:700;margin-bottom:2px;}
+.card-title{font-size:clamp(11px,1.5vw,14px);font-weight:700;color:var(--black);margin-bottom:4px;}
+.card-desc{font-size:clamp(9px,1.1vw,11px);color:var(--muted);font-weight:300;line-height:1.6;}
+.usage{background:var(--white);border:1px solid var(--border);padding:clamp(16px,2.5vw,32px);margin-bottom:clamp(24px,4vw,48px);}
+.usage h3{font-size:clamp(12px,1.5vw,16px);font-weight:700;color:var(--dark);margin-bottom:12px;}
+.usage p{font-size:clamp(9px,1.2vw,12px);color:var(--dark);line-height:1.9;margin-bottom:8px;}
+.usage pre{background:var(--black);color:#E0E0E0;padding:clamp(12px,2vw,20px);font-size:clamp(9px,1.1vw,11px);line-height:1.8;overflow-x:auto;border-radius:4px;}
+.usage pre .hl{color:var(--gold-light);}
+.footer{background:var(--black);padding:clamp(16px,3vw,32px);text-align:center;}
+.footer p{font-size:clamp(9px,1.2vw,11px);color:rgba(255,255,255,0.3);font-weight:300;letter-spacing:1px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>COMMERCEX M&A</h1>
+  <div class="bar"></div>
+  <p>INFORMATION MEMORANDUM TEMPLATE LIBRARY</p>
+  <p style="margin-top:8px;font-size:clamp(9px,1.2vw,12px);color:rgba(255,255,255,0.35);">全27種テンプレート &mdash; 16:9 PowerPoint対応 &mdash; レスポンシブ</p>
+</div>
+
+<div class="container">
+
+  <div class="usage">
+    <h3>使い方ガイド</h3>
+    <p>各テンプレートは単体のHTMLファイルです。<code>{{placeholder}}</code> 形式のプレースホルダーを実際のデータに置換して使用します。</p>
+    <p>Claudeに案件情報をテキストで渡し、使用するテンプレートを指定すれば、自動的にプレースホルダーを埋めた概要書を生成できます。</p>
+    <pre><span class="hl">プロンプト例：</span>
+以下の案件情報をもとに、企業概要書を作成してください。
+使用テンプレート：T01, T04, T07, T12, T19, T22, T08, T24, T27
+
+【案件情報】
+会社名：○○株式会社
+事業内容：EC事業（Amazon・自社EC）
+売上高：2億円 ...
+
+→ 各テンプレートの {{placeholder}} を案件情報で埋めてHTMLを出力してください。</pre>
+  </div>
+
+  <!-- A. 表紙・導入 -->
+  <div class="category">
+    <div class="cat-header"><h2>A. 表紙・導入</h2><span>COVER & INTRODUCTION</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T01_cover_standard.html"><div class="card-preview"><iframe src="T01_cover_standard.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">COVER</div><div class="card-id">T01</div><div class="card-title">標準表紙</div><div class="card-desc">ゴールドアクセントバー付きの標準的な表紙。会社名・事業概要を大きく配置。</div></div></a>
+      <a class="card" href="T02_toc.html"><div class="card-preview"><iframe src="T02_toc.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">INTRO</div><div class="card-id">T02</div><div class="card-title">目次</div><div class="card-desc">最大8項目の目次ページ。ドットリーダー付き。</div></div></a>
+      <a class="card" href="T03_section_divider.html"><div class="card-preview"><iframe src="T03_section_divider.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">INTRO</div><div class="card-id">T03</div><div class="card-title">セクション区切り</div><div class="card-desc">セクション間の区切りページ。番号・タイトルを中央配置。</div></div></a>
+    </div>
+  </div>
+
+  <!-- B. 企業基本情報 -->
+  <div class="category">
+    <div class="cat-header"><h2>B. 企業基本情報</h2><span>COMPANY INFORMATION</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T04_company_overview.html"><div class="card-preview"><iframe src="T04_company_overview.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">COMPANY</div><div class="card-id">T04</div><div class="card-title">会社概要</div><div class="card-desc">12項目のテーブル形式。会社名・代表者・所在地等を一覧表示。</div></div></a>
+      <a class="card" href="T05_overview_dashboard.html"><div class="card-preview"><iframe src="T05_overview_dashboard.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">COMPANY</div><div class="card-id">T05</div><div class="card-title">概要ダッシュボード</div><div class="card-desc">KPI＋事業概要＋売上・利益＋譲渡理由＋強み。情報密度の高い1ページ。</div></div></a>
+    </div>
+  </div>
+
+  <!-- C. ビジネス・事業 -->
+  <div class="category">
+    <div class="cat-header"><h2>C. ビジネス・事業</h2><span>BUSINESS & OPERATIONS</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T06_market_size.html"><div class="card-preview"><iframe src="T06_market_size.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T06</div><div class="card-title">市場規模の推移</div><div class="card-desc">CSS棒グラフ付き市場規模推移（7年分）＋CAGR＋数値テーブル。</div></div></a>
+      <a class="card" href="T07_business_model_flow.html"><div class="card-preview"><iframe src="T07_business_model_flow.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T07</div><div class="card-title">ビジネスモデル</div><div class="card-desc">仕入→コアビジネス→販売チャネルの横フロー図。</div></div></a>
+      <a class="card" href="T08_brand_introduction.html"><div class="card-preview"><iframe src="T08_brand_introduction.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T08</div><div class="card-title">商品・ブランド紹介</div><div class="card-desc">ブランド概要＋強み3点＋主要商品4点。ブランド価値を訴求。</div></div></a>
+      <a class="card" href="T09_channel_breakdown.html"><div class="card-preview"><iframe src="T09_channel_breakdown.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T09</div><div class="card-title">販売チャネル構成</div><div class="card-desc">チャネル別売上テーブル＋CSS円グラフ＋凡例。比率が一目でわかる構成。</div></div></a>
+      <a class="card" href="T10_marketing.html"><div class="card-preview"><iframe src="T10_marketing.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T10</div><div class="card-title">集客・マーケティング</div><div class="card-desc">チャネル別パフォーマンス＋KPI4指標＋マーケ戦略サマリー。</div></div></a>
+      <a class="card" href="T11_ip_licenses.html"><div class="card-preview"><iframe src="T11_ip_licenses.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">BUSINESS</div><div class="card-id">T11</div><div class="card-title">知的財産・許認可</div><div class="card-desc">知財権テーブル＋許認可一覧＋主要契約・取引先。</div></div></a>
+    </div>
+  </div>
+
+  <!-- D. 財務情報 -->
+  <div class="category">
+    <div class="cat-header"><h2>D. 財務情報</h2><span>FINANCIAL DATA</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T12_financial_summary.html"><div class="card-preview"><iframe src="T12_financial_summary.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T12</div><div class="card-title">財務サマリー</div><div class="card-desc">左：3期PL（修正後営業利益・EBITDA付）＋右：前期BS＋下：PL/BS修正メモ。</div></div></a>
+      <a class="card" href="T13_pl_statement.html"><div class="card-preview"><iframe src="T13_pl_statement.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T13</div><div class="card-title">損益計算書</div><div class="card-desc">詳細P/L。売上〜当期純利益まで15項目。</div></div></a>
+      <a class="card" href="T14_balance_sheet.html"><div class="card-preview"><iframe src="T14_balance_sheet.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T14</div><div class="card-title">貸借対照表</div><div class="card-desc">資産の部・負債純資産の部を左右2カラム＋右下に総資産・純資産サマリー。</div></div></a>
+      <a class="card" href="T15_kpi_metrics_grid.html"><div class="card-preview"><iframe src="T15_kpi_metrics_grid.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T15</div><div class="card-title">KPI指標一覧</div><div class="card-desc">2x2グリッドで3〜4つのKPI指標を大きく表示。不要なカードは削除可。</div></div></a>
+      <a class="card" href="T16_revenue_breakdown.html"><div class="card-preview"><iframe src="T16_revenue_breakdown.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T16</div><div class="card-title">売上構成</div><div class="card-desc">事業別売上構成比。テーブル＋積み上げバー＋円グラフで複数事業を比較。</div></div></a>
+      <a class="card" href="T17_valuation.html"><div class="card-preview"><iframe src="T17_valuation.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T17</div><div class="card-title">バリュエーション</div><div class="card-desc">マルチプル法（EV/EBITDA）＋年買法＋総合レンジ表示。</div></div></a>
+      <a class="card" href="T18_growth_plan.html"><div class="card-preview"><iframe src="T18_growth_plan.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">FINANCIAL</div><div class="card-id">T18</div><div class="card-title">成長計画</div><div class="card-desc">定量目標（売上・利益推移5期）＋定性目標（新商品・マーケティング・組織強化）。</div></div></a>
+    </div>
+  </div>
+
+  <!-- E. 組織・人材 -->
+  <div class="category">
+    <div class="cat-header"><h2>E. 組織・人材</h2><span>ORGANIZATION & TEAM</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T19_org_chart.html"><div class="card-preview"><iframe src="T19_org_chart.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">ORGANIZATION</div><div class="card-id">T19</div><div class="card-title">組織図・人員体制</div><div class="card-desc">部署別人数付き組織図＋役職別役割テーブル＋従業員情報メモ欄。</div></div></a>
+      <a class="card" href="T20_owner_profile.html"><div class="card-preview"><iframe src="T20_owner_profile.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">ORGANIZATION</div><div class="card-id">T20</div><div class="card-title">オーナープロフィール</div><div class="card-desc">写真＋プロフィール＋経歴タイムライン＋会社沿革＋買手へのメッセージ。</div></div></a>
+      <a class="card" href="T21_shareholders_officers.html"><div class="card-preview"><iframe src="T21_shareholders_officers.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">ORGANIZATION</div><div class="card-id">T21</div><div class="card-title">株主・役員一覧</div><div class="card-desc">株主テーブル＋役員テーブルを左右2カラムで配置。</div></div></a>
+    </div>
+  </div>
+
+  <!-- F. M&A条件 -->
+  <div class="category">
+    <div class="cat-header"><h2>F. M&A条件</h2><span>M&A TERMS & CLOSING</span><div class="line"></div></div>
+    <div class="grid">
+      <a class="card" href="T22_deal_conditions.html"><div class="card-preview"><iframe src="T22_deal_conditions.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">M&A</div><div class="card-id">T22</div><div class="card-title">譲渡条件詳細</div><div class="card-desc">9項目の条件テーブル＋譲渡理由。</div></div></a>
+      <a class="card" href="T23_buyer_message.html"><div class="card-preview"><iframe src="T23_buyer_message.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">M&A</div><div class="card-id">T23</div><div class="card-title">買い手へのメッセージ</div><div class="card-desc">オーナー写真＋メッセージ本文＋期待すること＋引継ぎ姿勢。</div></div></a>
+      <a class="card" href="T24_faq.html"><div class="card-preview"><iframe src="T24_faq.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">M&A</div><div class="card-id">T24</div><div class="card-title">想定Q&A</div><div class="card-desc">最大8問のQ&A。買い手からの想定質問と回答を整理。</div></div></a>
+      <a class="card" href="T25_schedule_advisor.html"><div class="card-preview"><iframe src="T25_schedule_advisor.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">M&A</div><div class="card-id">T25</div><div class="card-title">次のステップ</div><div class="card-desc">4ステップフロー＋手数料体系＋補足事項。</div></div></a>
+      <a class="card" href="T26_service_introduction.html"><div class="card-preview"><iframe src="T26_service_introduction.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">SERVICE</div><div class="card-id">T26</div><div class="card-title">CommerceX M&A サービス紹介</div><div class="card-desc">M&A後運営支援・CommerceX AI・会社HPの3サービス紹介。</div></div></a>
+      <a class="card" href="T27_closing_page.html"><div class="card-preview"><iframe src="T27_closing_page.html" loading="lazy"></iframe></div><div class="card-info"><div class="card-tag">CLOSING</div><div class="card-id">T27</div><div class="card-title">エンドページ</div><div class="card-desc">ロゴ＋タグライン＋連絡先のクロージングページ。</div></div></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>CommerceX M&A &mdash; Information Memorandum Template Library &mdash; 27 Templates</p>
+</div>
+
+</body>
+</html>

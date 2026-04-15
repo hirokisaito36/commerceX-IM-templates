@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>想定Q&A | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">09 — FAQ</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">09</div><div class="st">想定Q&A</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0;overflow:hidden;">
+      <!-- 左カラム：Q1〜Q4 -->
+      <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q1</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q1_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q1_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q2</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q2_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q2_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q3</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q3_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q3_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q4</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q4_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q4_answer}}</div>
+        </div>
+      </div>
+      <!-- 右カラム：Q5〜Q8 -->
+      <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q5</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q5_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q5_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q6</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q6_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q6_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q7</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q7_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q7_answer}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:9px 12px;flex:1;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-shrink:0;">
+            <div style="width:20px;height:20px;background:var(--gold);color:var(--white);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;">Q8</div>
+            <div style="font-size:9px;font-weight:700;color:var(--dark);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{q8_question}}</div>
+          </div>
+          <div class="txt" style="flex:1;overflow:hidden;padding-left:26px;">{{q8_answer}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

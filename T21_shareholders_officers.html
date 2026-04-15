@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株主・役員一覧 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.val-lg{font-size:17px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.val-xl{font-size:21px;font-weight:700;color:var(--gold);line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.lbl{font-size:7.5px;font-weight:300;color:var(--muted);letter-spacing:0.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+.hd-gold{font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:4px;padding-bottom:3px;border-bottom:1px solid var(--gold-border);}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">05 — Shareholders & Officers</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">05</div><div class="st">株主・役員一覧</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5%;flex:1;min-height:0;overflow:hidden;">
+      <div style="overflow:hidden;display:flex;flex-direction:column;">
+        <div class="hd-gold">株主一覧</div>
+        <table style="flex:1;">
+          <thead><tr style="background:var(--black);"><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:30%;">氏名</th><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">役職</th><th style="text-align:right;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">株数</th><th style="text-align:right;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:20%;">比率</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-light);background:var(--cream);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:30%;">{{sh_1_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{sh_1_role}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--dark);font-size:8.5px;width:25%;">{{sh_1_shares}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--gold);font-weight:700;font-size:8.5px;width:20%;">{{sh_1_pct}}</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:30%;">{{sh_2_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{sh_2_role}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--dark);font-size:8.5px;width:25%;">{{sh_2_shares}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--gold);font-weight:700;font-size:8.5px;width:20%;">{{sh_2_pct}}</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:30%;">{{sh_3_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{sh_3_role}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--dark);font-size:8.5px;width:25%;">{{sh_3_shares}}</td>
+              <td style="padding:0.8% 1.2%;text-align:right;color:var(--gold);font-weight:700;font-size:8.5px;width:20%;">{{sh_3_pct}}</td>
+            </tr></tbody>
+        </table>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:1%;font-size:7.5px;color:var(--muted);line-height:1.7;margin-top:0.8%;flex-shrink:0;">{{share_overview}}</div>
+      </div>
+      <div style="overflow:hidden;display:flex;flex-direction:column;">
+        <div class="hd-gold">役員一覧</div>
+        <table style="flex:1;">
+          <thead><tr style="background:var(--black);"><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">氏名</th><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">役職</th><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">就任</th><th style="text-align:left;padding:0.7% 1.2%;font-weight:500;color:var(--white);font-size:7.5px;width:25%;">報酬</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-light);background:var(--cream);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:25%;">{{of_1_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_1_role}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--muted);font-size:8.5px;width:25%;">{{of_1_since}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_1_compensation}}</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:25%;">{{of_2_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_2_role}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--muted);font-size:8.5px;width:25%;">{{of_2_since}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_2_compensation}}</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-light);">
+              <td style="padding:0.8% 1.2%;font-weight:700;color:var(--black);font-size:8.5px;width:25%;">{{of_3_name}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_3_role}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--muted);font-size:8.5px;width:25%;">{{of_3_since}}</td>
+              <td style="padding:0.8% 1.2%;color:var(--dark);font-size:8.5px;width:25%;">{{of_3_compensation}}</td>
+            </tr></tbody>
+        </table>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:1%;font-size:7.5px;color:var(--muted);line-height:1.7;margin-top:0.8%;flex-shrink:0;">{{officer_note}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

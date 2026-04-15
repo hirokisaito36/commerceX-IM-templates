@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>売上構成 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:12px 48px 12px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.tbl th{padding:4px 8px;text-align:left;font-size:7px;font-weight:500;color:var(--white);background:var(--black);}
+.tbl th.right{text-align:right;}
+.tbl td{padding:5px 8px;font-size:8.5px;color:var(--dark);border-bottom:1px solid var(--border-light);}
+.tbl td.right{text-align:right;}
+.tbl td.bold{font-weight:700;}
+.tbl tr.total{background:var(--cream);}
+.tbl tr.total td{font-weight:700;}
+
+/* Stacked bar */
+.stacked-bar{display:flex;height:24px;border-radius:2px;overflow:hidden;margin-bottom:6px;}
+.bar-seg{display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;color:var(--white);overflow:hidden;white-space:nowrap;}
+
+/* Pie chart */
+.pie-chart{width:180px;height:180px;border-radius:50%;position:relative;}
+.pie-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:80px;height:80px;border-radius:50%;background:var(--white);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.legend-item{display:flex;align-items:center;gap:6px;margin-bottom:4px;}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.legend-name{font-size:8px;color:var(--dark);flex:1;}
+.legend-pct{font-size:8.5px;font-weight:700;color:var(--dark);min-width:32px;text-align:right;}
+
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">03 — Revenue Breakdown</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">03</div><div class="st">売上構成（事業別）</div><div class="sl"></div></div>
+
+    <div style="display:grid;grid-template-columns:1fr 260px;gap:20px;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- 左カラム：事業別テーブル -->
+      <div style="display:flex;flex-direction:column;overflow:hidden;">
+        <!-- 積み上げバー -->
+        <div class="stacked-bar">
+          <!-- 使用時は各セグメントのwidthを構成比に合わせて変更 -->
+          <!-- サンプル: biz1=45%, biz2=30%, biz3=15%, biz4=10% -->
+          <div class="bar-seg" style="width:45%;background:#C49000;">45%</div>
+          <div class="bar-seg" style="width:30%;background:#F0C830;">30%</div>
+          <div class="bar-seg" style="width:15%;background:#333333;">15%</div>
+          <div class="bar-seg" style="width:10%;background:#888888;">10%</div>
+        </div>
+
+        <table class="tbl" style="flex-shrink:0;">
+          <thead><tr>
+            <th style="width:25%;">事業名</th>
+            <th class="right" style="width:18%;">売上高</th>
+            <th class="right" style="width:14%;">構成比</th>
+            <th class="right" style="width:18%;">営業利益</th>
+            <th style="width:25%;">概要</th>
+          </tr></thead>
+          <tbody>
+          <tr><td class="bold">{{biz_1_name}}</td><td class="right">{{biz_1_revenue}}</td><td class="right bold" style="color:var(--gold);">{{biz_1_pct}}</td><td class="right">{{biz_1_profit}}</td><td>{{biz_1_desc}}</td></tr>
+          <tr><td class="bold">{{biz_2_name}}</td><td class="right">{{biz_2_revenue}}</td><td class="right bold" style="color:var(--gold);">{{biz_2_pct}}</td><td class="right">{{biz_2_profit}}</td><td>{{biz_2_desc}}</td></tr>
+          <tr><td class="bold">{{biz_3_name}}</td><td class="right">{{biz_3_revenue}}</td><td class="right bold" style="color:var(--gold);">{{biz_3_pct}}</td><td class="right">{{biz_3_profit}}</td><td>{{biz_3_desc}}</td></tr>
+          <tr><td class="bold">{{biz_4_name}}</td><td class="right">{{biz_4_revenue}}</td><td class="right bold" style="color:var(--gold);">{{biz_4_pct}}</td><td class="right">{{biz_4_profit}}</td><td>{{biz_4_desc}}</td></tr>
+          <tr class="total"><td class="bold">合計</td><td class="right">{{biz_total_revenue}}</td><td class="right bold">100%</td><td class="right">{{biz_total_profit}}</td><td>—</td></tr>
+          </tbody>
+        </table>
+
+        <!-- 補足 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:8px 10px;margin-top:8px;flex:1;overflow:hidden;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);margin-bottom:3px;">売上構成の特徴・補足</div>
+          <div class="txt-sm" style="white-space:pre-line;">{{revenue_note}}</div>
+        </div>
+      </div>
+
+      <!-- 右カラム：円グラフ＋凡例 -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;">
+        <div style="font-size:9px;font-weight:700;color:var(--dark);letter-spacing:1px;">事業別売上構成比</div>
+
+        <!-- CSS Pie Chart -->
+        <!-- サンプル: biz1=45%, biz2=30%, biz3=15%, biz4=10% -->
+        <div class="pie-chart" style="background:conic-gradient(#C49000 0% 45%,#F0C830 45% 75%,#333333 75% 90%,#888888 90% 100%);">
+          <div class="pie-center">
+            <div style="font-size:7px;color:var(--muted);">売上合計</div>
+            <div style="font-size:11px;font-weight:700;color:var(--gold);">{{biz_total_revenue}}</div>
+          </div>
+        </div>
+
+        <!-- 凡例 -->
+        <div style="width:100%;padding:0 10px;">
+          <div class="legend-item"><div class="legend-dot" style="background:#C49000;"></div><div class="legend-name">{{biz_1_name}}</div><div class="legend-pct">{{biz_1_pct}}</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#F0C830;"></div><div class="legend-name">{{biz_2_name}}</div><div class="legend-pct">{{biz_2_pct}}</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#333333;"></div><div class="legend-name">{{biz_3_name}}</div><div class="legend-pct">{{biz_3_pct}}</div></div>
+          <div class="legend-item"><div class="legend-dot" style="background:#888888;"></div><div class="legend-name">{{biz_4_name}}</div><div class="legend-pct">{{biz_4_pct}}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

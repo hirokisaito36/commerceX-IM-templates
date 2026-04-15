@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集客・マーケティング | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;
+  color:var(--black);
+  line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+}
+.slide-wrapper{
+  width:960px;height:540px;
+  transform-origin:center center;
+}
+.page{
+  width:960px;height:540px;
+  background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.ph{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 48px;height:38px;
+  border-bottom:1px solid var(--border-light);flex-shrink:0;
+}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{
+  flex:1 1 0%;padding:15px 48px 16px;
+  overflow:hidden;min-height:0;
+  display:flex;flex-direction:column;
+}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">03 — Marketing</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">03</div><div class="st">集客・マーケティング</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;min-height:0;overflow:hidden;">
+      <!-- 左カラム：チャネル別KPI -->
+      <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">集客チャネル別パフォーマンス</div>
+        <!-- チャネル1 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:8px 12px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="font-size:9px;font-weight:700;color:var(--dark);">{{ch_1_name}}</div>
+            <div style="font-size:10px;font-weight:700;color:var(--gold);">{{ch_1_share}}</div>
+          </div>
+          <div style="width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+            <div style="width:{{ch_1_bar_pct}};height:100%;background:var(--gold);border-radius:3px;"></div>
+          </div>
+          <div class="txt-sm" style="margin-top:3px;">{{ch_1_detail}}</div>
+        </div>
+        <!-- チャネル2 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:8px 12px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="font-size:9px;font-weight:700;color:var(--dark);">{{ch_2_name}}</div>
+            <div style="font-size:10px;font-weight:700;color:var(--gold);">{{ch_2_share}}</div>
+          </div>
+          <div style="width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+            <div style="width:{{ch_2_bar_pct}};height:100%;background:var(--gold);border-radius:3px;"></div>
+          </div>
+          <div class="txt-sm" style="margin-top:3px;">{{ch_2_detail}}</div>
+        </div>
+        <!-- チャネル3 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:8px 12px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="font-size:9px;font-weight:700;color:var(--dark);">{{ch_3_name}}</div>
+            <div style="font-size:10px;font-weight:700;color:var(--gold);">{{ch_3_share}}</div>
+          </div>
+          <div style="width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+            <div style="width:{{ch_3_bar_pct}};height:100%;background:var(--gold);border-radius:3px;"></div>
+          </div>
+          <div class="txt-sm" style="margin-top:3px;">{{ch_3_detail}}</div>
+        </div>
+        <!-- チャネル4 -->
+        <div style="background:var(--surface);border:1px solid var(--border);padding:8px 12px;overflow:hidden;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <div style="font-size:9px;font-weight:700;color:var(--dark);">{{ch_4_name}}</div>
+            <div style="font-size:10px;font-weight:700;color:var(--gold);">{{ch_4_share}}</div>
+          </div>
+          <div style="width:100%;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+            <div style="width:{{ch_4_bar_pct}};height:100%;background:var(--gold);border-radius:3px;"></div>
+          </div>
+          <div class="txt-sm" style="margin-top:3px;">{{ch_4_detail}}</div>
+        </div>
+      </div>
+      <!-- 右カラム：KPI＋マーケ戦略 -->
+      <div style="display:flex;flex-direction:column;gap:10px;overflow:hidden;">
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">主要マーケティングKPI</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0;">
+          <div style="background:var(--surface);border:1px solid var(--border);padding:10px 12px;text-align:center;">
+            <div style="font-size:7.5px;color:var(--muted);font-weight:300;margin-bottom:2px;">{{kpi_1_label}}</div>
+            <div style="font-size:16px;font-weight:700;color:var(--gold);line-height:1.2;">{{kpi_1_value}}</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);padding:10px 12px;text-align:center;">
+            <div style="font-size:7.5px;color:var(--muted);font-weight:300;margin-bottom:2px;">{{kpi_2_label}}</div>
+            <div style="font-size:16px;font-weight:700;color:var(--gold);line-height:1.2;">{{kpi_2_value}}</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);padding:10px 12px;text-align:center;">
+            <div style="font-size:7.5px;color:var(--muted);font-weight:300;margin-bottom:2px;">{{kpi_3_label}}</div>
+            <div style="font-size:16px;font-weight:700;color:var(--gold);line-height:1.2;">{{kpi_3_value}}</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);padding:10px 12px;text-align:center;">
+            <div style="font-size:7.5px;color:var(--muted);font-weight:300;margin-bottom:2px;">{{kpi_4_label}}</div>
+            <div style="font-size:16px;font-weight:700;color:var(--gold);line-height:1.2;">{{kpi_4_value}}</div>
+          </div>
+        </div>
+        <div style="font-size:8.5px;font-weight:700;color:var(--gold);padding-bottom:4px;border-bottom:2px solid var(--gold);flex-shrink:0;">マーケティング戦略サマリー</div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);padding:10px 14px;flex:1;overflow:hidden;">
+          <div class="txt" style="line-height:1.9;">{{marketing_strategy}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

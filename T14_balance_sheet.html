@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>貸借対照表 | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:12px 48px 12px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">03 — Balance Sheet</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">03</div><div class="st">貸借対照表</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2%;flex:1;min-height:0;overflow:hidden;">
+      <!-- 左：資産の部 -->
+      <div style="overflow:hidden;display:flex;flex-direction:column;">
+        <div style="background:var(--black);padding:0.6% 1.2%;flex-shrink:0;">
+          <div style="font-size:7.5px;font-weight:700;color:var(--gold-light);letter-spacing:2px;">資産の部</div>
+        </div>
+        <table style="flex:1;">
+          <thead><tr style="background:var(--surface);"><th style="padding:0.5% 1.2%;text-align:left;font-size:7px;color:var(--muted);width:40%;">科目</th><th style="padding:0.5% 1.2%;text-align:right;font-size:7px;color:var(--muted);width:30%;">{{year_2}}</th><th style="padding:0.5% 1.2%;text-align:right;font-size:7px;color:var(--gold);width:30%;">{{year_3}}</th></tr></thead>
+          <tbody>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">現金及び預金</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{cash_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{cash_y3}}</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">売掛金</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{receivables_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{receivables_y3}}</td>
+          </tr>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">棚卸資産</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{inventory_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{inventory_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">流動資産合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{current_assets_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{current_assets_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">固定資産合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{fixed_assets_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{fixed_assets_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">資産合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{total_assets_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{total_assets_y3}}</td>
+          </tr></tbody>
+        </table>
+      </div>
+      <!-- 右：負債・純資産の部 -->
+      <div style="overflow:hidden;display:flex;flex-direction:column;">
+        <div style="background:var(--black);padding:0.6% 1.2%;flex-shrink:0;">
+          <div style="font-size:7.5px;font-weight:700;color:var(--gold-light);letter-spacing:2px;">負債・純資産の部</div>
+        </div>
+        <table style="flex:1;">
+          <thead><tr style="background:var(--surface);"><th style="padding:0.5% 1.2%;text-align:left;font-size:7px;color:var(--muted);width:40%;">科目</th><th style="padding:0.5% 1.2%;text-align:right;font-size:7px;color:var(--muted);width:30%;">{{year_2}}</th><th style="padding:0.5% 1.2%;text-align:right;font-size:7px;color:var(--gold);width:30%;">{{year_3}}</th></tr></thead>
+          <tbody>
+          <tr style="background:var(--surface);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">買掛金</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{payables_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{payables_y3}}</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">短期借入金</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{short_debt_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{short_debt_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">流動負債合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{current_liab_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{current_liab_y3}}</td>
+          </tr>
+          <tr>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);border-bottom:1px solid var(--border-light);width:40%;">長期借入金</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{long_debt_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{long_debt_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">固定負債合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{fixed_liab_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{fixed_liab_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">負債合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{total_liab_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{total_liab_y3}}</td>
+          </tr>
+          <tr style="background:var(--cream);">
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;border-bottom:1px solid var(--border-light);width:40%;">純資産合計</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--dark);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{net_assets_y2}}</td>
+            <td style="padding:0.7% 1.2%;font-size:8px;color:var(--gold);font-weight:700;text-align:right;border-bottom:1px solid var(--border-light);width:30%;">{{net_assets_y3}}</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 右下サマリー：総資産と純資産 -->
+    <div style="display:flex;gap:2%;margin-top:6px;flex-shrink:0;">
+      <div style="flex:1;"></div>
+      <div style="flex:1;display:flex;gap:2%;">
+        <div style="flex:1;background:var(--black);padding:6px 10px;text-align:center;">
+          <div style="font-size:6.5px;color:var(--gold-light);letter-spacing:1px;margin-bottom:2px;">総資産</div>
+          <div style="font-size:14px;font-weight:900;color:var(--gold-light);">{{total_assets_y3}}</div>
+        </div>
+        <div style="flex:1;background:var(--gold);padding:6px 10px;text-align:center;">
+          <div style="font-size:6.5px;color:var(--white);letter-spacing:1px;margin-bottom:2px;">純資産</div>
+          <div style="font-size:14px;font-weight:900;color:var(--white);">{{net_assets_y3}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

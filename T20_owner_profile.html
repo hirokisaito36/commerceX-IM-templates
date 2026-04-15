@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オーナープロフィール | CommerceX M&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gold-light:#F0C830;--cream:#FFF7DC;--gold-border:rgba(196,144,0,0.3);
+  --black:#111111;--dark:#333333;--medium:#555555;--muted:#888888;
+  --surface:#F5F5F3;--border:#E0E0E0;--border-light:#F0F0F0;--white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#CCCAC7;color:var(--black);line-height:1.6;
+  display:flex;justify-content:center;align-items:center;
+  min-height:100vh;overflow:hidden;
+}
+.slide-wrapper{width:960px;height:540px;transform-origin:center center;}
+.page{
+  width:960px;height:540px;background:var(--white);
+  box-shadow:0 4px 24px rgba(0,0,0,0.12);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:38px;border-bottom:1px solid var(--border-light);flex-shrink:0;}
+.ph-logo{font-size:8px;font-weight:900;letter-spacing:2px;color:var(--muted);}
+.ph-sec{font-size:8px;color:var(--muted);font-weight:300;letter-spacing:1px;}
+.pc{flex:1 1 0%;padding:10px 48px 10px;overflow:hidden;min-height:0;display:flex;flex-direction:column;}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:900;color:var(--gold);}
+.st{font-size:13px;letter-spacing:2px;color:var(--black);font-weight:700;}
+.sl{flex:1;height:1px;background:var(--border);}
+table{width:100%;border-collapse:collapse;table-layout:fixed;}
+td,th{overflow:hidden;text-overflow:ellipsis;word-break:break-all;}
+.txt{font-size:9px;color:var(--dark);line-height:1.7;overflow:hidden;}
+.txt-sm{font-size:7.5px;color:var(--muted);line-height:1.6;overflow:hidden;}
+.hd-gold{font-size:8.5px;font-weight:700;color:var(--gold);margin-bottom:3px;padding-bottom:2px;border-bottom:1px solid var(--gold-border);}
+@media print{
+  body{background:none;overflow:visible;}
+  .slide-wrapper{transform:none !important;}
+  .page{box-shadow:none;width:100%;height:auto;aspect-ratio:16/9;}
+}
+</style>
+</head>
+<body>
+<div class="slide-wrapper">
+
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">04 — Owner Profile</div></div>
+  <div class="pc">
+    <div class="sh"><div class="sn">04</div><div class="st">オーナープロフィール</div><div class="sl"></div></div>
+    <div style="display:grid;grid-template-columns:22% 1fr;gap:2.5%;flex:1;min-height:0;overflow:hidden;">
+      <!-- 左カラム：写真＋基本情報 -->
+      <div style="display:flex;flex-direction:column;gap:4px;overflow:hidden;">
+        <div style="width:100%;aspect-ratio:1;background:var(--border-light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <div style="text-align:center;color:var(--muted);font-size:8px;font-weight:300;">{{photo_placeholder}}</div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--gold);padding:6px;overflow:hidden;">
+          <div style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{owner_name}}</div>
+          <div class="txt-sm" style="margin-bottom:4px;">{{owner_title}}</div>
+          <table style="font-size:7.5px;">
+            <tr><td style="color:var(--muted);padding:1px 0;width:35%;">年齢</td><td style="color:var(--dark);">{{owner_age}}</td></tr>
+            <tr><td style="color:var(--muted);padding:1px 0;">出身</td><td style="color:var(--dark);">{{owner_origin}}</td></tr>
+            <tr><td style="color:var(--muted);padding:1px 0;">趣味</td><td style="color:var(--dark);">{{owner_hobby}}</td></tr>
+          </table>
+        </div>
+      </div>
+      <!-- 右カラム：経歴＋沿革＋メッセージ -->
+      <div style="display:flex;flex-direction:column;gap:4px;overflow:hidden;">
+        <!-- 経歴 -->
+        <div style="overflow:hidden;">
+          <div class="hd-gold">経歴</div>
+          <div style="border-left:2px solid var(--border);padding-left:2%;margin-left:0.5%;">
+            <div style="position:relative;padding-bottom:3px;padding-left:3%;">
+              <div style="position:absolute;left:0;top:3px;width:6px;height:6px;border-radius:50%;background:var(--border);"></div>
+              <div style="font-size:7px;font-weight:700;color:var(--muted);">{{career_1_year}}</div>
+              <div class="txt-sm">{{career_1_desc}}</div>
+            </div>
+            <div style="position:relative;padding-bottom:3px;padding-left:3%;">
+              <div style="position:absolute;left:0;top:3px;width:6px;height:6px;border-radius:50%;background:var(--border);"></div>
+              <div style="font-size:7px;font-weight:700;color:var(--muted);">{{career_2_year}}</div>
+              <div class="txt-sm">{{career_2_desc}}</div>
+            </div>
+            <div style="position:relative;padding-bottom:3px;padding-left:3%;">
+              <div style="position:absolute;left:0;top:3px;width:6px;height:6px;border-radius:50%;background:var(--gold);"></div>
+              <div style="font-size:7px;font-weight:700;color:var(--gold);">{{career_3_year}}</div>
+              <div class="txt-sm">{{career_3_desc}}</div>
+            </div>
+            <div style="position:relative;padding-bottom:3px;padding-left:3%;">
+              <div style="position:absolute;left:0;top:3px;width:6px;height:6px;border-radius:50%;background:var(--gold);"></div>
+              <div style="font-size:7px;font-weight:700;color:var(--gold);">{{career_4_year}}</div>
+              <div class="txt-sm">{{career_4_desc}}</div>
+            </div>
+          </div>
+        </div>
+        <!-- 会社沿革 -->
+        <div style="overflow:hidden;flex-shrink:0;">
+          <div class="hd-gold">会社沿革</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12px;">
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_1_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_1_event}}</div>
+            </div>
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_4_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_4_event}}</div>
+            </div>
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_2_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_2_event}}</div>
+            </div>
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_5_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_5_event}}</div>
+            </div>
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_3_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_3_event}}</div>
+            </div>
+            <div style="display:flex;gap:6px;padding:2px 0;border-bottom:1px solid var(--border-light);">
+              <div style="font-size:7px;font-weight:700;color:var(--muted);min-width:40px;">{{history_6_year}}</div>
+              <div class="txt-sm" style="flex:1;">{{history_6_event}}</div>
+            </div>
+          </div>
+        </div>
+        <!-- 買手へのメッセージ -->
+        <div style="background:var(--cream);border:1px solid var(--gold);border-left:3px solid var(--gold);padding:5px 8px;flex-shrink:0;overflow:hidden;">
+          <div style="font-size:7px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:2px;">代表より　買手の方へ</div>
+          <div class="txt" style="font-style:italic;">{{owner_message}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  var w=document.querySelector('.slide-wrapper');
+  function fit(){
+    var sx=window.innerWidth/960,sy=window.innerHeight/540;
+    var s=Math.min(sx,sy)*0.95;
+    w.style.transform='scale('+s+')';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
