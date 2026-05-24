@@ -467,34 +467,61 @@ body{font-family:'Noto Sans JP',sans-serif;background:#CCCAC7;color:var(--bk);li
   <div class="pc" style="padding:18px 52px 21px;">
     <div class="sh"><div class="sn">02-1</div><div class="st">ビジネス・事業モデル</div><div class="sl"></div></div>
 
-    <!-- 4ノード generic フロー：モノとお金の流れを上下分割で可視化 -->
-    <div class="archflow">
-      <div class="arn"><div class="arh">STEP 1</div><div class="art">商品企画 / 配合設計</div><div class="ard">成分監修ドクターと共同で配合レシピを設計。</div><div class="armetric">自社保有レシピ 18本</div></div>
-      <div class="ararr"><div class="goods">→</div><div class="money">←</div></div>
-      <div class="arn core"><div class="arh">STEP 2</div><div class="art">国内OEM 3社へ製造委託</div><div class="ard">化粧水系A社／クリーム系B社／サプリ系C社へ委託。</div><div class="armetric">原価率 28% / 在庫回転 14日</div></div>
-      <div class="ararr"><div class="goods">→</div><div class="money">←</div></div>
-      <div class="arn"><div class="arh">STEP 3</div><div class="art">4チャネル販売</div><div class="ard">SNS（IG/LINE/TikTok）で集客し、自社ECとモールで販売。</div>
-        <div class="archips">
-          <span class="archip">自社EC <b>68%</b></span>
-          <span class="archip">Amazon <b>18%</b></span>
-          <span class="archip">楽天 <b>10%</b></span>
-          <span class="archip">Qoo10 <b>4%</b></span>
-        </div>
+    <!-- CXMA-IM-INJECT: p7-archetype-block
+         業態判定後、IM-flow-archetypes_reference.html (https://hirokisaito36.github.io/commerceX-IM-templates/v2/IM-flow-archetypes_reference.html)
+         の該当アーキタイプから <div class="exrow">/<div class="flow">/<div class="appeal"> をまるごと抜き出し、
+         下記 
+    <div class="exrow">該当例：<b>D2Cスキンケアブランド（自社EC＋モール）</b>　／　源泉＝<b>企画力＋ブランド</b>（製造は持たない）　／　流通＝直販（卸なし）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node core" style="flex:1.1;"><div class="nh">PLAN / BRAND</div><div class="nt">企画・ブランド</div><div class="nd">配合レシピ18本を自社保有<br>ブランド世界観・価格設計</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">委託</div></div>
+        <div class="node ext" style="flex:1;"><span class="extpill">外部委託</span><div class="nh">OEM / ODM</div><div class="nt">委託製造（3社）</div><div class="nd">国内OEM 3社（化粧水/クリーム/サプリ）<br>最低ロット 2,000本／納期 4週間</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">納品</div></div>
+        <div class="node" style="flex:0.85;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">3PL倉庫（千葉）<br>在庫回転 14日</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">直販</div></div>
+        <div class="node" style="flex:1.1;"><div class="nh">CHANNELS</div><div class="nt">自社EC／モール</div><div class="nd">自社EC 68% ／ Amazon 18%<br>楽天 10% ／ Qoo10 4%</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.95;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">定期コース会員 8,200名<br>LTV 24,800円／リピート率 58%</div></div>
       </div>
-      <div class="ararr"><div class="goods">→</div><div class="money">←</div></div>
-      <div class="arn dark"><div class="arh">STEP 4</div><div class="art">20–40代女性 顧客</div><div class="ard">定期コース会員 8,200名。化粧水を起点に他SKUへクロスセル。</div><div class="armetric dark">LTV 24,800円 / リピート率 58%</div></div>
     </div>
-
-    <!-- 凡例：モノとお金の流れ -->
-    <div class="archlegend">
-      <div class="afl-row"><span class="afl-mark goods">→</span><span class="afl-lbl">商品・サービスの流れ</span><span class="afl-txt">配合レシピ → OEM工場で製造 → 自社倉庫(3PL) → 各販売チャネル → 顧客の手元へ</span></div>
-      <div class="afl-row"><span class="afl-mark money">←</span><span class="afl-lbl">お金の流れ</span><span class="afl-txt">顧客が支払い → ECプラットフォーム手数料控除後に売上計上 → 製造原価をOEMに支払い → 残りが粗利（72%）</span></div>
+    <div class="appeal">
+      <div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div>
+      <div class="appeal-row">
+        <div class="appeal-c"><div class="at">高粗利・身軽な経営</div><div class="ad">自社工場を持たず企画に集中し、卸を介さない直販のため中間マージンが乗らず、粗利率 72% を実現。</div></div>
+        <div class="appeal-c"><div class="at">積み上がる顧客基盤</div><div class="ad">化粧水定期コースで継続顧客（リピート率58%）が積み上がり、ストック型売上が事業の土台に。</div></div>
+        <div class="appeal-c"><div class="at">横展開のしやすさ</div><div class="ad">委託製造ゆえ新SKU・新ブランドの立ち上げが速く、買い手の商品ポートフォリオに乗せやすい。</div></div>
+      </div>
+    </div> プレースホルダに HTML 文字列として注入する。
+         サンプル生成（gen_sample_d2c.py）では「物-1 ファブレスD2C」を埋め込み。 -->
+    
+    <div class="exrow">該当例：<b>D2Cスキンケアブランド（自社EC＋モール）</b>　／　源泉＝<b>企画力＋ブランド</b>（製造は持たない）　／　流通＝直販（卸なし）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node core" style="flex:1.1;"><div class="nh">PLAN / BRAND</div><div class="nt">企画・ブランド</div><div class="nd">配合レシピ18本を自社保有<br>ブランド世界観・価格設計</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">委託</div></div>
+        <div class="node ext" style="flex:1;"><span class="extpill">外部委託</span><div class="nh">OEM / ODM</div><div class="nt">委託製造（3社）</div><div class="nd">国内OEM 3社（化粧水/クリーム/サプリ）<br>最低ロット 2,000本／納期 4週間</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">納品</div></div>
+        <div class="node" style="flex:0.85;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">3PL倉庫（千葉）<br>在庫回転 14日</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">直販</div></div>
+        <div class="node" style="flex:1.1;"><div class="nh">CHANNELS</div><div class="nt">自社EC／モール</div><div class="nd">自社EC 68% ／ Amazon 18%<br>楽天 10% ／ Qoo10 4%</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.95;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">定期コース会員 8,200名<br>LTV 24,800円／リピート率 58%</div></div>
+      </div>
+    </div>
+    <div class="appeal">
+      <div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div>
+      <div class="appeal-row">
+        <div class="appeal-c"><div class="at">高粗利・身軽な経営</div><div class="ad">自社工場を持たず企画に集中し、卸を介さない直販のため中間マージンが乗らず、粗利率 72% を実現。</div></div>
+        <div class="appeal-c"><div class="at">積み上がる顧客基盤</div><div class="ad">化粧水定期コースで継続顧客（リピート率58%）が積み上がり、ストック型売上が事業の土台に。</div></div>
+        <div class="appeal-c"><div class="at">横展開のしやすさ</div><div class="ad">委託製造ゆえ新SKU・新ブランドの立ち上げが速く、買い手の商品ポートフォリオに乗せやすい。</div></div>
+      </div>
     </div>
 
     <!-- 業態説明（買い手向け：このビジネスの稼ぎ方を1〜2文で） -->
     <div class="flowsummary">
       <div class="fsh">このビジネスの稼ぎ方</div>
-      <div class="fst">国内OEM3社に製造を委託し、自社で配合レシピのみ保有するファブレス型D2C。代表自らがSNSアンバサダーとなり、Instagram・LINE・TikTokから自社ECサイトに集客。化粧水定期コースで継続顧客（リピート率58%）を積み上げ、固定費の軽さと顧客LTVの長さで高粗利を実現している。</div>
+      <div class="fst">国内OEM3社に製造を委託し、自社で配合レシピのみ保有するファブレス型D2C。代表自らがSNSアンバサダーとなり、Instagram・LINE・TikTokから自社ECサイトに集客。化粧水定期コースで継続顧客（リピート率58%）を積み上げ、固定費の軽さと顧客LTVの長さで高粗利（72%）を実現している。</div>
     </div>
 
   </div>
@@ -1242,50 +1269,41 @@ body{font-family:'Noto Sans JP',sans-serif;background:#CCCAC7;color:var(--bk);li
 .finbar .fbleg i{width:10px;height:10px;border-radius:3px;display:inline-block;}
 
 
-/* === ビジネスページ：業態別フロー前提のプレースホルダ（.p7arch スコープ） === */
-.p7arch .pc{display:flex;flex-direction:column;}
-.p7arch .archmeta{display:flex;align-items:center;gap:14px;background:var(--sf);border:1px solid var(--br);border-left:3px solid var(--gold);border-radius:10px;padding:11px 18px;margin-bottom:18px;}
-.p7arch .amrow{display:flex;align-items:center;gap:8px;}
-.p7arch .aml{font-size:9px;font-weight:700;color:var(--mu);letter-spacing:0.5px;}
-.p7arch .amchip{font-size:11px;font-weight:700;color:var(--gold);background:var(--gl);border:1px solid var(--gb);border-radius:999px;padding:4px 14px;}
-.p7arch .amval{font-size:11px;font-weight:700;color:var(--bk);}
-.p7arch .amarrow{color:var(--gold);font-weight:900;font-size:14px;}
-
-.p7arch .archflow{display:flex;align-items:stretch;gap:0;min-height:180px;margin-bottom:10px;}
-.p7arch .arn .armetric{margin-top:auto;padding-top:8px;font-size:8.5px;color:var(--gold);font-weight:700;letter-spacing:0.3px;border-top:1px dashed var(--gb);}
-.p7arch .arn .armetric.dark{color:#f5d56e;border-top-color:#3a3a36;}
-.p7arch .arn .archips{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px dashed var(--gb);}
-.p7arch .arn .archip{font-size:8px;font-weight:500;color:var(--md);background:var(--sf);border:1px solid var(--br);border-radius:999px;padding:2px 7px;}
-.p7arch .arn .archip b{font-weight:900;color:var(--gold);margin-left:2px;}
-.p7arch .ararr{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:0 6px;}
-.p7arch .ararr .goods{color:var(--gold);font-weight:900;font-size:16px;line-height:1;}
-.p7arch .ararr .money{color:#7a7a72;font-weight:700;font-size:14px;line-height:1;}
-.p7arch .archlegend{display:flex;flex-direction:column;gap:5px;background:var(--sf);border:1px solid var(--bl);border-radius:8px;padding:8px 14px;margin-bottom:12px;}
-.p7arch .archlegend .afl-row{display:grid;grid-template-columns:22px 110px 1fr;gap:8px;align-items:center;font-size:9px;color:var(--md);}
-.p7arch .archlegend .afl-mark{font-weight:900;text-align:center;font-size:13px;}
-.p7arch .archlegend .afl-mark.goods{color:var(--gold);}
-.p7arch .archlegend .afl-mark.money{color:#7a7a72;}
-.p7arch .archlegend .afl-lbl{font-weight:700;color:var(--bk);}
-.p7arch .archlegend .afl-txt{font-weight:300;color:var(--md);}
-.p7arch .arn{flex:1;border:1px dashed var(--mu);background:#fff;border-radius:13px;padding:13px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center;}
-.p7arch .arn.core{border:1px solid var(--gold);background:var(--gl);border-style:solid;border-top:3px solid var(--gold);}
-.p7arch .arn.dark{background:var(--bk);border-color:var(--bk);border-style:solid;border-top:3px solid var(--gold);color:#fff;}
-.p7arch .arh{font-size:8px;font-weight:700;color:var(--mu);letter-spacing:1.5px;}
-.p7arch .arn.core .arh{color:var(--gold);}
-.p7arch .arn.dark .arh{color:#bdb9b0;}
-.p7arch .art{font-size:13px;font-weight:900;color:var(--bk);line-height:1.3;}
-.p7arch .arn.dark .art{color:#fff;}
-.p7arch .ard{font-size:9px;color:var(--md);line-height:1.6;font-weight:300;}
-.p7arch .arn.dark .ard{color:#cfcbc2;}
-.p7arch .ararr{display:flex;align-items:center;color:var(--gold);font-weight:900;font-size:18px;padding:0 8px;}
-
-.p7arch .archgallery{flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--gb);padding-top:13px;}
-.p7arch .flowsummary{flex:1;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--gb);padding-top:14px;justify-content:center;}
-.p7arch .flowsummary .fsh{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:1px;}
-.p7arch .flowsummary .fst{font-size:12px;color:var(--dk);line-height:1.85;font-weight:400;}
-.p7arch .aghd{font-size:9px;font-weight:700;color:var(--gold);letter-spacing:0.5px;}
-.p7arch .agchips{display:flex;flex-wrap:wrap;gap:7px;}
-.p7arch .agchip{font-size:9px;font-weight:500;color:var(--md);background:var(--sf);border:1px solid var(--br);border-radius:999px;padding:5px 12px;}
+/* === ビジネスページ：アーキタイプ注入（IM-flow-archetypes_reference.html 互換 / .p7arch スコープ） === */
+.p7arch .pc{display:flex;flex-direction:column;gap:8px;}
+.p7arch .exrow{font-size:9px;color:var(--mu);font-weight:300;margin-bottom:10px;letter-spacing:0.4px;flex-shrink:0;}
+.p7arch .exrow b{color:var(--md);font-weight:700;}
+.p7arch .flow{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+.p7arch .row{display:flex;align-items:stretch;gap:0;}
+.p7arch .row.center{align-items:center;}
+.p7arch .row.fill{align-items:stretch;min-height:240px;}
+.p7arch .row.fill .node{justify-content:center;}
+.p7arch .node{background:#fff;border:1px solid var(--br);border-top:3px solid #D0CCC4;border-radius:13px;padding:11px 14px;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.p7arch .node .nh{font-size:7.5px;font-weight:700;letter-spacing:1.3px;color:var(--mu);}
+.p7arch .node .nt{font-size:12px;font-weight:900;color:var(--bk);line-height:1.25;}
+.p7arch .node .nd{font-size:8.5px;color:var(--md);line-height:1.55;font-weight:300;}
+.p7arch .node.core{border-top-color:var(--gold);background:var(--gl);border-color:var(--gb);}
+.p7arch .node.core .nh{color:var(--gold);}
+.p7arch .node.ext{border-style:dashed;border-top-style:solid;background:var(--sf);}
+.p7arch .node.ext .nh{color:var(--gold);}
+.p7arch .node.dark{background:var(--bk);border-color:var(--bk);border-top-color:var(--gold);}
+.p7arch .node.dark .nh{color:#bdb9b0;}
+.p7arch .node.dark .nt{color:#fff;}
+.p7arch .node.dark .nd{color:#cfcbc2;}
+.p7arch .extpill{display:inline-block;font-size:6.5px;font-weight:700;color:#fff;background:var(--mu);padding:2px 7px;border-radius:999px;align-self:flex-start;}
+.p7arch .arr{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 4px;}
+.p7arch .arr .g{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--gl);color:var(--gold);font-size:14px;font-weight:900;line-height:1;}
+.p7arch .arr .l{font-size:6.5px;color:var(--mu);letter-spacing:0.5px;margin-top:4px;}
+.p7arch .appeal{flex-shrink:0;margin-top:10px;padding-top:10px;border-top:1px solid var(--gb);}
+.p7arch .appeal-h{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.p7arch .appeal-h::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);display:inline-block;}
+.p7arch .appeal-row{display:flex;gap:8px;}
+.p7arch .appeal-c{flex:1;background:var(--sf);border:1px solid var(--bl);border-radius:10px;padding:9px 12px;}
+.p7arch .appeal-c .at{font-size:9.5px;font-weight:900;color:var(--bk);margin-bottom:3px;line-height:1.3;}
+.p7arch .appeal-c .ad{font-size:8px;color:var(--md);line-height:1.65;font-weight:300;}
+.p7arch .flowsummary{flex-shrink:0;display:flex;flex-direction:column;gap:5px;background:var(--gl);border:1px solid var(--gb);border-left:3px solid var(--gold);border-radius:8px;padding:9px 14px;margin-top:10px;}
+.p7arch .flowsummary .fsh{font-size:8.5px;font-weight:700;color:var(--gold);letter-spacing:1px;}
+.p7arch .flowsummary .fst{font-size:10px;color:var(--dk);line-height:1.7;font-weight:400;}
 
 
 /* === 代表者プロフィール（株主役員ページ統合版） === */
