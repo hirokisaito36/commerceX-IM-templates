@@ -15,12 +15,12 @@
 
 ## ブラウザで開く（ライブプレビュー）
 
-GitHub の raw は HTML として描画されないため、[GitHack](https://raw.githack.com/) 経由で閲覧：
+GitHub Pages で直接ホスト。クリック1回で開けます：
 
-- [生成用本体プレビュー](https://raw.githack.com/hirokisaito36/commerceX-IM-templates/main/v2/im-standard-soft.html)
-- [アーキタイプ図11種](https://raw.githack.com/hirokisaito36/commerceX-IM-templates/main/v2/IM-flow-archetypes_reference.html)
-- [カタログ](https://raw.githack.com/hirokisaito36/commerceX-IM-templates/main/v2/im-archetype-catalog/index.html)
-- [D2Cサンプル（完成イメージ）](https://raw.githack.com/hirokisaito36/commerceX-IM-templates/main/v2/im-sample-d2c.html)
+- [① 生成用本体プレビュー](https://hirokisaito36.github.io/commerceX-IM-templates/v2/im-standard-soft.html)
+- [② アーキタイプ図11種](https://hirokisaito36.github.io/commerceX-IM-templates/v2/IM-flow-archetypes_reference.html)
+- [③ カタログ](https://hirokisaito36.github.io/commerceX-IM-templates/v2/im-archetype-catalog/index.html)
+- [④ D2Cサンプル（完成イメージ）](https://hirokisaito36.github.io/commerceX-IM-templates/v2/im-sample-d2c.html)
 
 ## 仕様の確定事項（要点）
 
