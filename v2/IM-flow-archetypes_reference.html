@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>企業概要書 事業フロー アーキタイプ参考図（物販ファミリー版・ソフトデザイン）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gl:#FFF7DC;--gb:rgba(196,144,0,0.30);
+  --bk:#1A1A18;--dk:#2A2A28;--md:#5A5A56;--mu:#9A9A94;
+  --br:#E6E3DE;--bl:#F1EFEA;--sf:#FAF8F4;--wh:#FFF;
+  /* 角丸スケール（柔らかさ） */
+  --r-sm:8px;--r-md:13px;--r-lg:20px;--r-pill:999px;
+  /* 影なし（フラット） */
+  --soft:none;
+  --soft2:none;
+  /* 黄金比ベースの余白スケール 8 → 13 → 21 → 34 */
+  --sp1:8px;--sp2:13px;--sp3:21px;--sp4:34px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:#D6D3CE;color:var(--bk);line-height:1.7;padding-bottom:40px;-webkit-font-smoothing:antialiased;}
+
+.page{width:860px;height:609px;margin:32px auto 0;background:var(--wh);box-shadow:var(--soft2);border-radius:var(--r-lg);position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.ph{display:flex;justify-content:space-between;align-items:center;padding:0 var(--sp4);height:46px;flex-shrink:0;}
+.ph::after{content:"";position:absolute;left:var(--sp4);right:var(--sp4);top:46px;height:1px;background:linear-gradient(90deg,transparent,var(--bl) 12%,var(--bl) 88%,transparent);}
+.ph-logo{font-size:9px;font-weight:900;letter-spacing:2.5px;color:var(--mu);}
+.ph-sec{font-size:9px;color:var(--mu);font-weight:300;letter-spacing:1px;}
+.body{flex:1;padding:var(--sp3) var(--sp4) var(--sp3);display:flex;flex-direction:column;min-height:0;}
+
+.sh{display:flex;align-items:center;gap:var(--sp2);margin-bottom:5px;}
+.sn{font-size:13px;font-weight:900;color:var(--gold);background:var(--gl);border-radius:var(--r-sm);padding:3px 9px;}
+.st{font-size:16px;letter-spacing:1.5px;color:var(--bk);font-weight:700;}
+.sl{flex:1;height:1px;background:linear-gradient(90deg,var(--br),transparent);}
+.flowtag{font-size:8px;font-weight:700;color:#fff;background:var(--gold);padding:4px 12px;letter-spacing:1px;white-space:nowrap;border-radius:var(--r-pill);box-shadow:var(--soft);}
+.exrow{font-size:9px;color:var(--mu);font-weight:300;margin-bottom:var(--sp2);letter-spacing:0.4px;}
+.exrow b{color:var(--md);font-weight:700;}
+
+.flow{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+
+/* ノード（角丸＋ソフトシャドウ） */
+.node{background:#fff;border:1px solid var(--br);border-top:3px solid #D0CCC4;border-radius:var(--r-md);padding:var(--sp2) calc(var(--sp2) + 3px);display:flex;flex-direction:column;gap:5px;min-width:0;box-shadow:var(--soft);}
+.node .nh{font-size:8px;font-weight:700;letter-spacing:1.5px;color:var(--mu);}
+.node .nt{font-size:14px;font-weight:900;color:var(--bk);line-height:1.25;}
+.node .nd{font-size:9px;color:var(--md);line-height:1.65;font-weight:300;}
+.node.core{border-top-color:var(--gold);background:var(--gl);border-color:var(--gb);}
+.node.core .nh{color:var(--gold);}
+.node.ext{border-style:dashed;border-top-style:solid;background:var(--sf);}
+.node.ext .nh{color:var(--gold);}
+.node.dark{background:var(--bk);border-color:var(--bk);border-top-color:var(--gold);}
+.node.dark .nh{color:#bdb9b0;}
+.node.dark .nt{color:#fff;}
+.node.dark .nd{color:#cfcbc2;}
+.extpill{display:inline-block;font-size:7px;font-weight:700;color:#fff;background:var(--mu);padding:2px 8px;border-radius:var(--r-pill);align-self:flex-start;}
+
+/* 矢印（円形バッジで柔らかく） */
+.arr{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 6px;}
+.arr .g{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--gl);color:var(--gold);font-size:16px;font-weight:900;line-height:1;box-shadow:var(--soft);}
+.arr .l{font-size:7px;color:var(--mu);letter-spacing:0.5px;margin-top:5px;}
+
+.row{display:flex;align-items:stretch;gap:0;}
+.row.center{align-items:center;}
+.row.fill{align-items:stretch;min-height:300px;}
+.row.fill .node{justify-content:center;}
+
+/* チャネルチップ */
+.chip{background:#fff;border:1px solid var(--br);border-left:3px solid var(--gold);border-radius:var(--r-sm);padding:9px 13px;font-size:10px;color:var(--dk);font-weight:700;box-shadow:var(--soft);}
+.chip span{display:block;font-size:8px;color:var(--mu);font-weight:300;margin-top:2px;}
+
+/* リング（循環/フライホイール） */
+.ring{position:relative;height:340px;}
+.ring .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:170px;height:170px;border-radius:50%;background:var(--gl);border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:var(--soft2);}
+.ring .center .ct{font-size:11px;font-weight:900;color:var(--bk);}
+.ring .center .cv{font-size:18px;font-weight:900;color:var(--gold);line-height:1.1;}
+.ring .center .cs{font-size:7px;color:var(--md);font-weight:300;}
+.ring .npos{position:absolute;width:178px;transform:translate(-50%,-50%);}
+.ring .cyc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:15px;color:var(--gold);font-weight:900;}
+
+/* ファネル */
+.funnel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp1);}
+.funnel .seg{background:var(--bk);color:#fff;text-align:center;padding:13px 0;font-size:12px;font-weight:700;border-radius:var(--r-md);box-shadow:var(--soft);}
+.funnel .seg .s{font-size:8px;font-weight:300;color:#cfcbc2;display:block;margin-top:2px;}
+
+/* 両面（プラットフォーム）— 余白バランス調整 */
+.twoside{display:flex;align-items:stretch;justify-content:center;gap:0;min-height:300px;}
+.sidecol{display:flex;flex-direction:column;justify-content:center;gap:var(--sp2);width:212px;}
+.sidehd{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--md);text-align:center;background:var(--sf);border-radius:var(--r-pill);padding:4px 0;}
+.sidecol .node{flex:1;justify-content:center;}
+.platform{align-self:center;width:210px;height:210px;border-radius:var(--r-lg);background:var(--bk);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--sp1);box-shadow:var(--soft2);}
+.platform .pt{font-size:13px;font-weight:900;}
+.platform .pv{font-size:9px;color:#cfcbc2;font-weight:300;line-height:1.7;}
+.bidir{display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:18px;width:50px;}
+.bidir .ic{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--gl);box-shadow:var(--soft);}
+.bidir .bl{font-size:6px;color:var(--mu);font-weight:300;letter-spacing:0.5px;writing-mode:vertical-rl;margin-top:5px;}
+
+/* ユニット展開 */
+.unit{border:1px solid var(--gb);background:var(--gl);border-radius:var(--r-md);padding:var(--sp2);width:210px;display:flex;flex-direction:column;gap:6px;justify-content:center;box-shadow:var(--soft);}
+.unit .ut{font-size:12px;font-weight:900;color:var(--bk);text-align:center;border-bottom:1px solid var(--gb);padding-bottom:6px;}
+.unit .ur{display:flex;justify-content:space-between;font-size:9px;color:var(--md);}
+.ghost{border:1px dashed var(--mu);background:#fff;border-radius:var(--r-md);opacity:0.7;width:158px;display:flex;flex-direction:column;gap:4px;padding:var(--sp2);justify-content:center;}
+.ghost .ut{font-size:10px;font-weight:700;color:var(--mu);text-align:center;}
+
+/* 特徴・魅力ストリップ（旧KPI欄を置換） */
+.appeal{flex-shrink:0;margin-top:var(--sp2);padding-top:var(--sp2);position:relative;}
+.appeal::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,var(--gb),transparent 60%);}
+.appeal-h{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:var(--sp1);display:flex;align-items:center;gap:6px;}
+.appeal-h::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;}
+.appeal-row{display:flex;gap:var(--sp1);}
+.appeal-c{flex:1;background:var(--sf);border:1px solid var(--bl);border-radius:var(--r-md);padding:11px 14px;box-shadow:var(--soft);}
+.appeal-c .at{font-size:10px;font-weight:900;color:var(--bk);margin-bottom:4px;line-height:1.35;}
+.appeal-c .ad{font-size:8.5px;color:var(--md);line-height:1.7;font-weight:300;}
+
+/* 注記バナー */
+.callout{margin-top:var(--sp2);background:var(--gl);border:1px solid var(--gb);border-radius:var(--r-md);padding:10px 15px;font-size:9px;color:var(--md);line-height:1.7;box-shadow:var(--soft);}
+.callout b{color:var(--bk);font-weight:700;}
+.banner{margin-top:var(--sp1);text-align:center;}
+.banner span{display:inline-block;font-size:9px;color:var(--gold);font-weight:700;background:var(--gl);border-radius:var(--r-pill);padding:5px 18px;}
+
+/* チャネル凡例 */
+.chleg{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:var(--sp2);}
+.chleg .lbl{font-size:8px;font-weight:700;color:var(--gold);letter-spacing:1px;}
+.chleg .c{font-size:9px;color:var(--md);background:var(--sf);border:1px solid var(--br);padding:5px 13px;border-radius:var(--r-pill);}
+
+/* 物販マトリクス */
+.mx{display:grid;grid-template-columns:130px 1fr 1fr 1fr;gap:7px;}
+.mx .corner{background:transparent;}
+.mx .h{font-size:9.5px;font-weight:700;color:var(--gold);text-align:center;padding:9px 5px;background:var(--gl);border-radius:var(--r-sm);display:flex;flex-direction:column;justify-content:center;line-height:1.4;}
+.mx .h span{font-size:7px;color:var(--mu);font-weight:300;}
+.mx .rh{font-size:10px;font-weight:700;color:var(--bk);display:flex;flex-direction:column;justify-content:center;padding:9px;background:var(--sf);border-radius:var(--r-sm);line-height:1.4;}
+.mx .rh span{font-size:7px;color:var(--mu);font-weight:300;margin-top:2px;}
+.mx .cell{border:1px solid var(--bl);background:#fff;border-radius:var(--r-sm);padding:9px;display:flex;flex-direction:column;gap:3px;justify-content:center;box-shadow:var(--soft);}
+.mx .cell.hot{background:var(--gl);border-color:var(--gb);}
+.mx .cell.faint{background:var(--sf);box-shadow:none;}
+.mx .tag{font-size:11px;font-weight:900;color:var(--bk);}
+.mx .tag b{color:var(--gold);}
+.mx .sub{font-size:7.5px;color:var(--mu);line-height:1.4;}
+
+/* 事業セグメント */
+.segwrap{display:flex;gap:var(--sp2);align-items:stretch;}
+.seg{flex:1;border:1px solid var(--br);border-top:4px solid var(--gold);border-radius:var(--r-md);padding:var(--sp2);display:flex;flex-direction:column;gap:var(--sp1);box-shadow:var(--soft);}
+.seg.sub{border-top-color:#cfcbc2;}
+.seg .sgh{font-size:8px;font-weight:700;color:var(--gold);letter-spacing:1px;}
+.seg.sub .sgh{color:var(--mu);}
+.seg .sgt{font-size:15px;font-weight:900;color:var(--bk);}
+.seg .sgd{font-size:9px;color:var(--md);line-height:1.65;}
+.seg .barwrap{margin-top:auto;}
+.seg .barlbl{font-size:8px;color:var(--mu);margin-bottom:4px;}
+.seg .bar{height:10px;background:var(--bl);border-radius:var(--r-pill);overflow:hidden;}
+.seg .bf{height:100%;background:var(--gold);border-radius:var(--r-pill);}
+.syn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;color:var(--gold);}
+.syn .sy{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--gl);font-size:20px;font-weight:900;box-shadow:var(--soft);}
+.syn .syl{font-size:7px;color:var(--mu);writing-mode:vertical-rl;letter-spacing:1px;margin-top:5px;}
+.steps{display:flex;flex-direction:column;gap:var(--sp1);margin-top:4px;}
+.step{display:flex;gap:11px;align-items:flex-start;font-size:9.5px;color:var(--md);line-height:1.65;}
+.step .num{width:20px;height:20px;flex-shrink:0;background:var(--gl);border-radius:50%;color:var(--gold);font-weight:900;font-size:9px;display:flex;align-items:center;justify-content:center;box-shadow:var(--soft);}
+.step b{color:var(--bk);}
+
+/* 表紙 */
+.cover{justify-content:center;}
+.cover .ct1{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:700;text-align:center;}
+.cover .ct2{font-size:26px;font-weight:900;margin:12px 0 5px;letter-spacing:1px;text-align:center;}
+.cover .ct3{font-size:11px;color:var(--md);font-weight:300;text-align:center;}
+.idx{margin-top:var(--sp3);display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;}
+.idx .grp{font-size:9px;font-weight:900;color:var(--gold);letter-spacing:1px;grid-column:1/-1;padding-bottom:4px;margin-top:5px;border-bottom:1px solid var(--gb);}
+.idx .lg{display:flex;gap:10px;align-items:baseline;font-size:10.5px;}
+.idx .lg .c{font-size:10px;font-weight:900;color:var(--gold);background:var(--gl);border-radius:var(--r-sm);padding:2px 7px;width:46px;text-align:center;flex-shrink:0;}
+.idx .lg b{font-weight:700;}
+.idx .lg span{color:var(--mu);font-size:8px;font-weight:300;}
+.note{font-size:8px;color:var(--mu);font-weight:300;margin-top:var(--sp1);text-align:center;}
+@media print{body{background:#fff;}.page{box-shadow:none;margin:0 auto;page-break-after:always;}}
+</style>
+</head>
+<body>
+
+<!-- ============ 表紙 / 目次 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">IM TEMPLATE — DESIGN REFERENCE v3</div></div>
+  <div class="body cover">
+    <div class="ct1">企業概要書 / 事業フロー</div>
+    <div class="ct2">ビジネスモデル・アーキタイプ参考図</div>
+    <div class="ct3">小売特化版｜物販ファミリーを「3軸」で展開（物-1〜7）＋ サブスク/支援/PF/多拠点 ＋ ハイブリッド</div>
+    <div class="idx">
+      <div class="grp">物販ファミリー（軸1 源泉 × 軸2 流通｜軸3 チャネルは属性）</div>
+      <div class="lg"><span class="c">物-1</span><div><b>ファブレスD2C／自社ブランドEC</b><br><span>企画＋委託製造＋直販｜★最頻出</span></div></div>
+      <div class="lg"><span class="c">物-2</span><div><b>SPA（製造小売）</b><br><span>製造〜小売を垂直統合</span></div></div>
+      <div class="lg"><span class="c">物-3</span><div><b>メーカー（自社製造）</b><br><span>自社工場・卸/直販</span></div></div>
+      <div class="lg"><span class="c">物-4</span><div><b>小売・物販（仕入販売）</b><br><span>製造非関与・EC/モール/店舗</span></div></div>
+      <div class="lg"><span class="c">物-5</span><div><b>卸・商社（BtoB流通）</b><br><span>仕入→卸・取引先網</span></div></div>
+      <div class="lg"><span class="c">物-6</span><div><b>リユース</b><br><span>買取→査定→販売の循環</span></div></div>
+      <div class="lg"><span class="c">物-7</span><div><b>輸入総代理店・ブランド総代理</b><br><span>独占販売権が中核資産</span></div></div>
+      <div class="lg"><span class="c">MX</span><div><b>物販3軸マトリクス</b><br><span>型の決まり方の全体像</span></div></div>
+      <div class="grp">物販以外の収益モデル</div>
+      <div class="lg"><span class="c">D</span><div><b>SaaS・サブスク</b><br><span>フライホイール</span></div></div>
+      <div class="lg"><span class="c">E</span><div><b>サービス・支援/代理店</b><br><span>ファネル＋継続関係</span></div></div>
+      <div class="lg"><span class="c">F</span><div><b>プラットフォーム/マッチング</b><br><span>両面ネットワーク</span></div></div>
+      <div class="lg"><span class="c">G</span><div><b>多拠点展開</b><br><span>展開様式（物販小売/サービスに重ねる）</span></div></div>
+      <div class="grp">複数事業</div>
+      <div class="lg"><span class="c">HY</span><div><b>ハイブリッド（事業セグメント）</b><br><span>主従の決め方＋シナジー表現</span></div></div>
+    </div>
+    <div class="note">※ 各ノード・特徴欄のテキストは型を示すサンプル。実データは案件DB／面談記録から差し込む想定。社名等の業務データは記載しない。</div>
+  </div>
+</div>
+
+<!-- ============ MX. 物販3軸マトリクス ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">MATRIX — Physical Goods Family</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">MX</div><div class="st">物販ファミリー 3軸マトリクス</div><div class="sl"></div><div class="flowtag">型の決まり方</div></div>
+    <div class="exrow">物販の型は <b>軸1 モノの源泉 × 軸2 販売先・流通</b> で決まる。<b>軸3 チャネル（自社EC/Amazon/楽天/店舗/卸先）は型ではなく“属性”</b>として販売ノードに構成比で差し込む。</div>
+    <div class="flow" style="justify-content:flex-start;">
+      <div class="mx">
+        <div class="corner"></div>
+        <div class="h">卸（BtoB）<span>小売店・法人へ卸す</span></div>
+        <div class="h">直販・小売（BtoC）<span>EC/モール/店舗で直接</span></div>
+        <div class="h">製造小売・垂直統合<span>SPA</span></div>
+
+        <div class="rh">自社製造<span>工場保有</span></div>
+        <div class="cell"><div class="tag"><b>物-3</b> メーカー卸</div><div class="sub">設備・原価が主役</div></div>
+        <div class="cell"><div class="tag"><b>物-3</b> メーカー直販</div><div class="sub">製造＋自社販路</div></div>
+        <div class="cell hot"><div class="tag"><b>物-2</b> SPA</div><div class="sub">企画〜小売を一気通貫</div></div>
+
+        <div class="rh">ファブレス<span>企画のみ・委託製造</span></div>
+        <div class="cell faint"><div class="tag">（稀）委託卸</div><div class="sub">企画→委託→卸</div></div>
+        <div class="cell hot"><div class="tag"><b>物-1</b> ファブレスD2C ★</div><div class="sub">企画＋委託＋自社EC</div></div>
+        <div class="cell"><div class="tag"><b>物-2</b> SPA（委託型）</div><div class="sub">委託製造＋直営小売</div></div>
+
+        <div class="rh">仕入販売<span>製造に非関与</span></div>
+        <div class="cell"><div class="tag"><b>物-5</b> 卸・商社</div><div class="sub">取引先網・与信</div></div>
+        <div class="cell hot"><div class="tag"><b>物-4</b> 小売・物販</div><div class="sub">仕入力・チャネル</div></div>
+        <div class="cell faint"><div class="tag">—</div></div>
+
+        <div class="rh">輸入（独占仕入）<span>仕入販売の特殊型</span></div>
+        <div class="cell"><div class="tag"><b>物-7</b> 輸入総代理（卸型）</div><div class="sub">独占販売権が中核</div></div>
+        <div class="cell"><div class="tag"><b>物-7</b> 輸入総代理（直販型）</div><div class="sub">卸＋直販ハイブリッド</div></div>
+        <div class="cell faint"><div class="tag">—</div></div>
+
+        <div class="rh">買取・再生<span>仕入販売の特殊型</span></div>
+        <div class="cell faint"><div class="tag">（稀）買取卸</div><div class="sub">BtoB再販</div></div>
+        <div class="cell hot"><div class="tag"><b>物-6</b> リユース</div><div class="sub">買取→査定→販売（循環）</div></div>
+        <div class="cell faint"><div class="tag">—</div></div>
+      </div>
+      <div class="chleg">
+        <span class="lbl">軸3 チャネル属性（全型共通・構成比で差し込み）：</span>
+        <span class="c">自社EC</span><span class="c">Amazon</span><span class="c">楽天</span><span class="c">Yahoo!</span><span class="c">実店舗</span><span class="c">卸先</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 物-1 ファブレスD2C ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-1 — Fabless D2C / Own-brand EC</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-1</div><div class="st">ファブレスD2C／自社ブランドEC</div><div class="sl"></div><div class="flowtag">★最頻出</div></div>
+    <div class="exrow">該当例：<b>健康食品・コスメ・雑貨の自社ブランド</b>　／　源泉＝<b>企画力＋ブランド</b>（製造は持たない）　／　流通＝直販（卸なし）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node core" style="flex:1.1;"><div class="nh">PLAN / BRAND</div><div class="nt">企画・ブランド</div><div class="nd">商品企画・SKU<br>ブランド世界観・価格設計</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">委託</div></div>
+        <div class="node ext" style="flex:1;"><span class="extpill">外部委託</span><div class="nh">OEM / ODM</div><div class="nt">委託製造</div><div class="nd">海外/国内工場（中国等）<br>自社工場は持たない</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">納品</div></div>
+        <div class="node" style="flex:0.85;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">3PL/自社倉庫<br>在庫回転</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">直販</div></div>
+        <div class="node" style="flex:1;"><div class="nh">CHANNELS</div><div class="nt">自社EC／モール</div><div class="nd">自社EC・Amazon・楽天<br>（構成比で差し込み）</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.9;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">新規／リピート<br>LTV・定期比率</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">高粗利・身軽な経営</div><div class="ad">自社工場を持たず企画に集中し、卸を介さない直販のため中間マージンが乗らず、高い粗利率を実現できる。</div></div>
+      <div class="appeal-c"><div class="at">積み上がる顧客基盤</div><div class="ad">リピート・定期購入によるストック型売上が土台。顧客データを蓄積しLTVを伸ばしやすい。</div></div>
+      <div class="appeal-c"><div class="at">横展開のしやすさ</div><div class="ad">委託製造ゆえ新商品・新ブランドの立ち上げが速く、買い手の商品ポートフォリオに乗せやすい。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-2 SPA ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-2 — SPA / Vertically Integrated</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-2</div><div class="st">SPA（製造小売）</div><div class="sl"></div><div class="flowtag">垂直統合</div></div>
+    <div class="exrow">該当例：<b>アパレルSPA・製造小売</b>　／　源泉＝<b>企画〜小売の一気通貫</b>　／　流通＝自社小売（卸を介さない）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node core" style="flex:1;"><div class="nh">PLAN</div><div class="nt">企画・MD</div><div class="nd">商品企画・MD<br>シーズン設計</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node" style="flex:1;"><div class="nh">PRODUCTION</div><div class="nt">製造（自社/委託）</div><div class="nd">自社工場 or OEM<br>原価コントロール</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node" style="flex:0.85;"><div class="nh">STOCK</div><div class="nt">在庫</div><div class="nd">在庫消化率<br>値引きロス</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node core" style="flex:1.1;"><div class="nh">OWN RETAIL</div><div class="nt">自社小売</div><div class="nd">直営店舗＋自社EC<br>（卸なし／全て自社）</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.85;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">店舗/EC会員<br>客単価・リピート</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">垂直統合の高粗利</div><div class="ad">企画から小売まで一気通貫で価格決定力が強く、中間マージンが発生しないため利益率が高い。</div></div>
+      <div class="appeal-c"><div class="at">ブランドと顧客接点を自社保有</div><div class="ad">店舗・ECで顧客と直接つながり、購買データとファンを資産として蓄積できる。</div></div>
+      <div class="appeal-c"><div class="at">多店舗・EC化の伸びしろ</div><div class="ad">再現性ある出店とEC強化により、明快な成長ストーリーを描きやすい。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-3 メーカー ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-3 — Manufacturer</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-3</div><div class="st">メーカー（自社製造）</div><div class="sl"></div><div class="flowtag">線形バリューチェーン</div></div>
+    <div class="exrow">該当例：<b>食品製造・部品メーカー・OEM受託</b>　／　源泉＝<b>製造設備・原価競争力・取引基盤</b>　／　流通＝卸 or 直販</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node" style="flex:1;"><div class="nh">SUPPLY</div><div class="nt">原材料・仕入</div><div class="nd">主要仕入先・調達国<br>単価・発注ロット</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">調達</div></div>
+        <div class="node core" style="flex:1.2;"><div class="nh">PRODUCTION</div><div class="nt">製造・加工（自社工場）</div><div class="nd">設備・生産能力<br>稼働率・歩留り</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">生産</div></div>
+        <div class="node" style="flex:0.9;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">倉庫・回転率</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">出荷</div></div>
+        <div class="node" style="flex:1;"><div class="nh">SALES</div><div class="nt">卸・直販</div><div class="nd">主要販売先・取引条件</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.9;"><div class="nh">CUSTOMER</div><div class="nt">取引先・顧客</div><div class="nd">継続取引基盤<br>顧客集中度</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">製造設備という参入障壁</div><div class="ad">自社の生産能力と品質は模倣されにくく、価格・納期で優位に立てる競争力の源泉。</div></div>
+      <div class="appeal-c"><div class="at">安定した取引基盤</div><div class="ad">継続取引の法人顧客がストック的な売上を生み、収益の予見性が高い。</div></div>
+      <div class="appeal-c"><div class="at">内製化シナジー</div><div class="ad">買い手が自社製品の製造機能を取り込める。垂直統合の受け皿として価値が高い。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-4 小売・物販 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-4 — Retail / Reseller</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-4</div><div class="st">小売・物販（仕入販売）</div><div class="sl"></div><div class="flowtag">製造非関与</div></div>
+    <div class="exrow">該当例：<b>セレクトEC・物販小売・型番商品販売</b>　／　源泉＝<b>仕入力・チャネル運用</b>（製造・企画は持たない）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node core" style="flex:1;"><div class="nh">BUYING</div><div class="nt">仕入・バイイング</div><div class="nd">仕入先・原価交渉<br>品揃え・型番選定</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node" style="flex:0.9;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">在庫水準・回転<br>欠品/過剰のバランス</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">販売</div></div>
+        <div class="node" style="flex:1.1;"><div class="nh">CHANNELS</div><div class="nt">販売チャネル</div><div class="nd">自社EC・Amazon・楽天・店舗<br>（構成比で差し込み）</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.9;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">新規／リピート<br>客単価</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">軽い在庫モデルで再現性</div><div class="ad">製造を持たず仕入と販売運用に集中するため、オペレーションが標準化しやすく引き継ぎやすい。</div></div>
+      <div class="appeal-c"><div class="at">マルチチャネル運用力</div><div class="ad">複数モール・自社ECを横断して売り切る販売ノウハウそのものが資産になる。</div></div>
+      <div class="appeal-c"><div class="at">即戦力の売上</div><div class="ad">既存の販売チャネルと商流をそのまま引き継げ、買収直後から売上に貢献する。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-5 卸・商社 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-5 — Wholesale / Trading</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-5</div><div class="st">卸・商社（BtoB流通）</div><div class="sl"></div><div class="flowtag">BtoB流通</div></div>
+    <div class="exrow">該当例：<b>BtoB卸・専門商社</b>　／　源泉＝<b>取引先網・与信・物流機能</b>　／　顧客は法人（小売店等）</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node" style="flex:1;"><div class="nh">SOURCING</div><div class="nt">仕入</div><div class="nd">メーカー・海外仕入<br>仕入条件・建値</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node" style="flex:0.9;"><div class="nh">STOCK</div><div class="nt">在庫・物流</div><div class="nd">在庫・配送機能<br>回転・欠品</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">卸</div></div>
+        <div class="node core" style="flex:1.1;"><div class="nh">WHOLESALE</div><div class="nt">卸・営業</div><div class="nd">取引先網・営業力<br>取引条件・与信管理</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:1;"><div class="nh">B2B CUSTOMER</div><div class="nt">取引先（法人）</div><div class="nd">小売店・事業者<br>取引先集中度</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">取引先網という無形資産</div><div class="ad">長年かけて築いた法人取引関係が、新規参入を阻む堀として機能する。</div></div>
+      <div class="appeal-c"><div class="at">安定的なリピート受注</div><div class="ad">BtoBの継続発注により売上が読みやすく、キャッシュフローが安定する。</div></div>
+      <div class="appeal-c"><div class="at">物流・与信機能</div><div class="ad">仕入〜配送〜与信を担う機能が、買い手のサプライチェーンを補完する。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-6 リユース ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-6 — Recommerce</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-6</div><div class="st">リユース・リコマース</div><div class="sl"></div><div class="flowtag">循環ループ</div></div>
+    <div class="exrow">該当例：<b>トレカ・中古ブランド・リユース</b>　／　源泉＝<b>査定・真贋力</b>と仕入（買取）チャネル</div>
+    <div class="flow">
+      <div class="ring">
+        <div class="center"><div class="ct">利益を再投資</div><div class="cv">在庫回転</div><div class="cs">買取↔販売の<br>スプレッド最大化</div></div>
+        <div class="npos node" style="left:50%;top:11%;"><div class="nh">① SOURCING</div><div class="nt">買取・仕入</div><div class="nd">店頭/出張/EC買取・せどり</div></div>
+        <div class="npos node core" style="left:88%;top:50%;"><div class="nh">② CORE VALUE</div><div class="nt">査定・真贋</div><div class="nd">鑑定力・値付け・状態評価</div></div>
+        <div class="npos node" style="left:50%;top:89%;"><div class="nh">③ STOCK</div><div class="nt">在庫・陳列</div><div class="nd">カテゴリ別在庫・回転日数</div></div>
+        <div class="npos node" style="left:12%;top:50%;"><div class="nh">④ SELL</div><div class="nt">販売</div><div class="nd">店舗/自社EC/オークション</div></div>
+        <div class="cyc" style="left:73%;top:23%;">↘</div>
+        <div class="cyc" style="left:73%;top:77%;">↙</div>
+        <div class="cyc" style="left:27%;top:77%;">↖</div>
+        <div class="cyc" style="left:27%;top:23%;">↗</div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">査定・真贋という専門性</div><div class="ad">模倣困難な目利き力が高い粗利と顧客の信頼を生む、最大の競争優位。</div></div>
+      <div class="appeal-c"><div class="at">独自の仕入（買取）チャネル</div><div class="ad">在庫を外部仕入れに頼らず買取で確保するため、原価と利益率をコントロールできる。</div></div>
+      <div class="appeal-c"><div class="at">資本効率の高い循環</div><div class="ad">在庫回転を効かせ、少ない運転資本で事業を回せる構造。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ 物-7 輸入総代理店 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">物-7 — Sole Import Distributor</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">物-7</div><div class="st">輸入総代理店・ブランド総代理</div><div class="sl"></div><div class="flowtag">独占販売権が中核</div></div>
+    <div class="exrow">該当例：<b>海外ブランドの日本総代理店</b>　／　源泉＝<b>総代理店契約（独占販売権）</b>　／　流通＝卸＋直販ハイブリッド</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="node ext" style="flex:1;"><span class="extpill">本国</span><div class="nh">OVERSEAS BRAND</div><div class="nt">海外ブランド</div><div class="nd">本国メーカー<br>商品供給元</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">契約</div></div>
+        <div class="node core" style="flex:1.15;"><div class="nh">EXCLUSIVE RIGHT</div><div class="nt">総代理店契約</div><div class="nd">日本独占販売権<br>契約残存・更新条件</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">輸入</div></div>
+        <div class="node" style="flex:0.9;"><div class="nh">IMPORT / STOCK</div><div class="nt">輸入・在庫</div><div class="nd">通関・為替<br>在庫・物流</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node" style="flex:1.05;"><div class="nh">HYBRID SALES</div><div class="nt">卸＋直販</div><div class="nd">小売店へ卸＋自社EC/店舗<br>（構成比で差し込み）</div></div>
+        <div class="arr"><div class="g">→</div></div>
+        <div class="node dark" style="flex:0.85;"><div class="nh">CUSTOMER</div><div class="nt">顧客</div><div class="nd">小売店・<br>エンド顧客</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">独占販売権という堀</div><div class="ad">日本市場での独占的地位が競合を排除する。確立されたブランドを育成リスクなく扱える。</div></div>
+      <div class="appeal-c"><div class="at">卸＋直販の両輪</div><div class="ad">販路が分散し特定チャネル依存が小さい。安定した卸と高粗利の直販を両取りできる。</div></div>
+      <div class="appeal-c"><div class="at">※前提＝契約の維持</div><div class="ad">独占権の<b>残存年数・更新条件・チェンジオブコントロール条項</b>が事業価値の生命線（DDの肝）。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ D. SaaS ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">D — SaaS / Subscription</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">D</div><div class="st">SaaS・サブスク</div><div class="sl"></div><div class="flowtag">フライホイール</div></div>
+    <div class="exrow">該当例：<b>業務SaaS・サブスクサービス</b>　／　源泉＝<b>継続課金（MRR）の積み上げと低解約</b></div>
+    <div class="flow">
+      <div class="ring">
+        <div class="center"><div class="ct">積み上がる</div><div class="cv">ARR / MRR</div><div class="cs">解約を抑え<br>純増を最大化</div></div>
+        <div class="npos node" style="left:50%;top:11%;"><div class="nh">① ACQUIRE</div><div class="nt">獲得</div><div class="nd">マーケ/IS・CAC</div></div>
+        <div class="npos node" style="left:88%;top:50%;"><div class="nh">② ONBOARD</div><div class="nt">定着・活用</div><div class="nd">オンボーディング</div></div>
+        <div class="npos node core" style="left:50%;top:89%;"><div class="nh">③ RETAIN</div><div class="nt">継続課金</div><div class="nd">低解約＝MRRの土台</div></div>
+        <div class="npos node" style="left:12%;top:50%;"><div class="nh">④ EXPAND</div><div class="nt">拡大（NRR）</div><div class="nd">アップセル→次の獲得へ</div></div>
+        <div class="cyc" style="left:73%;top:23%;">↘</div>
+        <div class="cyc" style="left:73%;top:77%;">↙</div>
+        <div class="cyc" style="left:27%;top:77%;">↖</div>
+        <div class="cyc" style="left:27%;top:23%;">↗</div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">ストック収益の安定性</div><div class="ad">解約が低ければMRRが積み上がり、売上が高く予測可能。事業価値が評価されやすい。</div></div>
+      <div class="appeal-c"><div class="at">高利益率と拡張性</div><div class="ad">追加コストを抑えて顧客を増やせるスケールメリットがあり、利益率の伸びが大きい。</div></div>
+      <div class="appeal-c"><div class="at">拡大の余地（NRR）</div><div class="ad">既存顧客内のアップセルで非線形に成長でき、買い手の成長戦略に乗せやすい。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ E. サービス・支援 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">E — Service / Agency</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">E</div><div class="st">サービス・支援/代理店</div><div class="sl"></div><div class="flowtag">ファネル＋継続関係</div></div>
+    <div class="exrow">該当例：<b>EC支援・広告代理・コンサル・受託開発</b>　／　源泉＝<b>顧客との継続関係と人の生産性</b></div>
+    <div class="flow">
+      <div class="row" style="gap:var(--sp3);align-items:stretch;min-height:300px;">
+        <div class="funnel" style="flex:1;">
+          <div class="seg" style="width:100%;">リード獲得 <span>紹介・問い合わせ・アウトバウンド</span></div>
+          <div class="arr"><div class="g" style="transform:rotate(90deg)">→</div></div>
+          <div class="seg" style="width:80%;">商談・受注 <span>提案・受注率</span></div>
+          <div class="arr"><div class="g" style="transform:rotate(90deg)">→</div></div>
+          <div class="seg" style="width:62%;background:var(--gold);">デリバリー（人月） <span>稼働・品質</span></div>
+        </div>
+        <div class="arr"><div class="g">→</div><div class="l">継続化</div></div>
+        <div class="node core" style="flex:0.9;justify-content:center;"><div class="nh">RECURRING RELATION</div><div class="nt">継続契約・追加受注</div><div class="nd">月次顧問／運用代行<br>アップセル・解約防止<br>顧客LTVの最大化</div></div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">継続関係によるストック性</div><div class="ad">顧問・運用代行で売上が継続的に積み上がり、フロー型より収益が安定する。</div></div>
+      <div class="appeal-c"><div class="at">人の専門性が参入障壁</div><div class="ad">蓄積したノウハウと実績は模倣されにくく、価格競争に巻き込まれにくい。</div></div>
+      <div class="appeal-c"><div class="at">顧客基盤の転用余地</div><div class="ad">既存顧客に物販やSaaS等をクロスセルできる、買い手にとっての拡張資産。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ F. プラットフォーム ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">F — Platform / Marketplace</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">F</div><div class="st">プラットフォーム/マッチング</div><div class="sl"></div><div class="flowtag">両面ネットワーク</div></div>
+    <div class="exrow">該当例：<b>仲介・マーケットプレイス・マッチング</b>　／　源泉＝<b>両side数の厚みとネットワーク効果（テイクレート）</b></div>
+    <div class="flow">
+      <div class="twoside">
+        <div class="sidecol">
+          <div class="sidehd">供給サイド</div>
+          <div class="node"><div class="nh">SUPPLY</div><div class="nt" style="font-size:12px;">出品者・提供者</div><div class="nd">登録数・稼働率・継続出品</div></div>
+          <div class="node"><div class="nh">INVENTORY</div><div class="nt" style="font-size:12px;">在庫／供給量</div><div class="nd">掲載数・充足度</div></div>
+        </div>
+        <div class="bidir"><div class="ic">⇄</div><div class="bl">送客・手数料</div></div>
+        <div class="platform"><div class="pt">プラットフォーム</div><div class="pv">マッチング・決済<br>テイクレート（手数料）<br>GMV を媒介</div></div>
+        <div class="bidir"><div class="ic">⇄</div><div class="bl">利用・購入</div></div>
+        <div class="sidecol">
+          <div class="sidehd">需要サイド</div>
+          <div class="node"><div class="nh">DEMAND</div><div class="nt" style="font-size:12px;">購入者・利用者</div><div class="nd">アクティブ数・リピート</div></div>
+          <div class="node"><div class="nh">TRANSACTION</div><div class="nt" style="font-size:12px;">取引・流通</div><div class="nd">成約率・客単価</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">ネットワーク効果の堀</div><div class="ad">両サイドが厚くなるほど価値が高まり、後発の参入が困難になる構造的な優位。</div></div>
+      <div class="appeal-c"><div class="at">在庫を持たない高収益</div><div class="ad">手数料（テイクレート）モデルで身軽かつ高粗利。スケール時の利益率が高い。</div></div>
+      <div class="appeal-c"><div class="at">GMV連動の成長</div><div class="ad">流通額の拡大がそのまま収益成長につながり、伸びが見えやすい。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ G. 多拠点展開 ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">G — Multi-unit (Expansion Overlay)</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">G</div><div class="st">多拠点展開</div><div class="sl"></div><div class="flowtag">展開様式オーバーレイ</div></div>
+    <div class="exrow"><b>収益モデルではなく“展開様式”</b>。物販小売（物-2/物-4）やサービス（E）に <b>重ねて</b>使う。例：物-2 SPA × 多店舗／E サービス × 多拠点。</div>
+    <div class="flow">
+      <div class="row center fill" style="gap:0;">
+        <div class="unit">
+          <div class="ut">1ユニットモデル</div>
+          <div class="ur"><span>売上／月</span><b>店舗P&L</b></div>
+          <div class="ur"><span>坪効率</span><b>客数×客単価</b></div>
+          <div class="ur"><span>FL比率・人件費</span><b>店舗利益率</b></div>
+          <div class="ur"><span>投資回収</span><b>ペイバック月数</b></div>
+        </div>
+        <div class="arr"><div class="g">→</div><div class="l">再現</div></div>
+        <div class="node core" style="flex:0.8;justify-content:center;"><div class="nh">ROLL-OUT</div><div class="nt">× N 拠点展開</div><div class="nd">標準化された<br>出店オペレーション</div></div>
+        <div class="arr"><div class="g">→</div><div class="l">余地</div></div>
+        <div style="display:flex;flex-direction:column;gap:var(--sp1);flex:0.9;justify-content:center;">
+          <div class="ghost"><div class="ut">出店候補①</div></div>
+          <div class="ghost"><div class="ut">出店候補②</div></div>
+          <div style="font-size:9px;color:var(--gold);font-weight:700;text-align:center;">＝ 出店余地（成長ドライバー）</div>
+        </div>
+      </div>
+    </div>
+    <div class="appeal"><div class="appeal-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div><div class="appeal-row">
+      <div class="appeal-c"><div class="at">再現性ある成長</div><div class="ad">黒字ユニットの横展開で売上を積み増せる、計画の立てやすい成長モデル。</div></div>
+      <div class="appeal-c"><div class="at">出店余地という伸びしろ</div><div class="ad">未出店エリアが明確な成長ドライバーとなり、買い手に上振れ余地を示せる。</div></div>
+      <div class="appeal-c"><div class="at">オペレーション標準化</div><div class="ad">仕組み化された運営が、買い手の多拠点展開力を補完する資産になる。</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ============ HY. ハイブリッド ============ -->
+<div class="page">
+  <div class="ph"><div class="ph-logo">COMMERCEX M&A</div><div class="ph-sec">HY — Multi-business / Segments</div></div>
+  <div class="body">
+    <div class="sh"><div class="sn">HY</div><div class="st">ハイブリッド（複数事業）</div><div class="sl"></div><div class="flowtag">事業セグメント</div></div>
+    <div class="exrow">「支援業＋物販」「SaaS＋物販」等。<b>1型に寄せず、主従を決めて骨格＋セグメント併記＋シナジー</b>で表現する。</div>
+    <div class="flow" style="justify-content:flex-start;">
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><b>主従を数字で決める</b>：売上 or（できれば）利益構成比で、譲渡対象の中核事業を「主アーキタイプ」に。</div></div>
+        <div class="step"><span class="num">2</span><div><b>主で骨格を組む</b>：事業フロー図・特徴欄は主事業のものを採用。</div></div>
+        <div class="step"><span class="num">3</span><div><b>「事業セグメント」ページを追加</b>：各事業を該当アーキタイプの簡易フロー＋セグメント別売上/利益で併記。</div></div>
+        <div class="step"><span class="num">4</span><div><b>シナジーを明記</b>：事業間の関係（例：支援で培ったマーケ力を自社物販に転用）＝バイヤー最注目。</div></div>
+      </div>
+      <div class="segwrap" style="margin-top:var(--sp2);">
+        <div class="seg">
+          <div class="sgh">主事業 — 骨格を担う</div>
+          <div class="sgt">例）物-1 ファブレスD2C</div>
+          <div class="sgd">フロー図・特徴欄はこちらを採用。利益の中核。</div>
+          <div class="barwrap"><div class="barlbl">利益構成比 80%</div><div class="bar"><div class="bf" style="width:80%;"></div></div></div>
+        </div>
+        <div class="syn"><div class="sy">⇄</div><div class="syl">シナジー</div></div>
+        <div class="seg sub">
+          <div class="sgh">従事業 — セグメント併記</div>
+          <div class="sgt">例）E サービス・支援</div>
+          <div class="sgd">セグメントページで簡易フロー＋売上/利益を併記。</div>
+          <div class="barwrap"><div class="barlbl">利益構成比 20%</div><div class="bar"><div class="bf" style="width:20%;background:#cfcbc2;"></div></div></div>
+        </div>
+      </div>
+      <div class="callout"><b>本質で主を選ぶ：</b>「SaaS＋物販」で利益が小さくても <b>ARR成長がバイヤーの買う価値</b>ならSaaSを主に。判定は cx-harness の「事業の本質を選ぶ」ルールと整合させる。</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

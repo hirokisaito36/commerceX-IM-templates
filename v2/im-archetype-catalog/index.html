@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CommerceX IM アーキタイプ辞典</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C49000;--gl:#FFF7DC;--gb:rgba(196,144,0,0.30);
+  --bk:#1A1A18;--dk:#2A2A28;--md:#5A5A56;--mu:#9A9A94;
+  --br:#E6E3DE;--bl:#F1EFEA;--sf:#FAF8F4;--wh:#FFF;
+  --r-sm:8px;--r-md:13px;--r-lg:20px;--r-pill:999px;
+  --sp1:8px;--sp2:13px;--sp3:21px;--sp4:34px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:#F3F1EC;color:var(--bk);line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+/* ===== ヘッダー ===== */
+.site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--br);}
+.hwrap{max-width:1120px;margin:0 auto;padding:18px var(--sp4) var(--sp2);}
+.brand{font-size:10px;font-weight:900;letter-spacing:3px;color:var(--mu);}
+.htitle{font-size:24px;font-weight:900;letter-spacing:1px;margin:4px 0 2px;}
+.hsub{font-size:11px;color:var(--md);font-weight:300;}
+.controls{display:flex;gap:var(--sp2);align-items:center;margin-top:var(--sp2);flex-wrap:wrap;}
+.search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:var(--sf);border:1px solid var(--br);border-radius:var(--r-pill);padding:9px 16px;}
+.search input{border:0;background:transparent;outline:0;flex:1;font-size:13px;font-family:inherit;color:var(--bk);}
+.search .ic{color:var(--mu);font-size:14px;}
+.clear-btn{font-size:11px;color:var(--md);background:var(--wh);border:1px solid var(--br);border-radius:var(--r-pill);padding:8px 16px;cursor:pointer;white-space:nowrap;}
+.clear-btn:hover{border-color:var(--gold);color:var(--gold);}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:var(--sp2);}
+.tab{font-size:12px;font-weight:700;color:var(--md);background:var(--sf);border:1px solid var(--br);border-radius:var(--r-pill);padding:7px 16px;cursor:pointer;transition:all .12s;}
+.tab:hover{border-color:var(--gb);}
+.tab.on{background:var(--bk);color:#fff;border-color:var(--bk);}
+.tab .ct{font-size:10px;opacity:.6;margin-left:5px;font-weight:400;}
+
+/* ===== グリッド ===== */
+.main{max-width:1120px;margin:0 auto;padding:var(--sp3) var(--sp4) 60px;}
+.count{font-size:11px;color:var(--mu);margin-bottom:var(--sp2);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp2);}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--wh);border:1px solid var(--br);border-radius:var(--r-md);padding:var(--sp2) var(--sp3);cursor:pointer;transition:all .14s;display:flex;flex-direction:column;gap:8px;}
+.card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.card .crow{display:flex;align-items:center;gap:9px;}
+.card .cid{font-size:11px;font-weight:900;color:var(--gold);background:var(--gl);border-radius:var(--r-sm);padding:3px 9px;flex-shrink:0;}
+.card .cfam{font-size:8px;font-weight:700;color:var(--md);background:var(--sf);border:1px solid var(--br);border-radius:var(--r-pill);padding:2px 9px;margin-left:auto;}
+.card .cname{font-size:15px;font-weight:900;line-height:1.3;}
+.card .cone{font-size:10px;color:var(--md);font-weight:300;line-height:1.6;flex:1;}
+.card .ctags{display:flex;gap:5px;flex-wrap:wrap;}
+.card .ctag{font-size:8px;color:var(--mu);background:var(--sf);border-radius:var(--r-pill);padding:3px 9px;}
+.card.feat{border-color:var(--gb);background:linear-gradient(180deg,var(--gl),var(--wh) 60%);}
+.empty{text-align:center;color:var(--mu);font-size:13px;padding:60px 0;}
+
+/* ===== 概要バナー ===== */
+.intro{background:var(--wh);border:1px solid var(--br);border-radius:var(--r-md);padding:var(--sp3);margin-bottom:var(--sp3);}
+.intro h2{font-size:13px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;}
+.intro p{font-size:11px;color:var(--md);line-height:1.8;}
+.intro .axes{display:flex;gap:var(--sp2);margin-top:var(--sp2);flex-wrap:wrap;}
+.intro .ax{flex:1;min-width:200px;background:var(--sf);border:1px solid var(--bl);border-radius:var(--r-sm);padding:11px 14px;}
+.intro .ax .axt{font-size:10px;font-weight:900;color:var(--bk);}
+.intro .ax .axd{font-size:9px;color:var(--md);font-weight:300;margin-top:3px;}
+
+/* ===== モーダル詳細 ===== */
+.overlay{position:fixed;inset:0;background:rgba(26,26,24,0.5);z-index:100;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;}
+.overlay.on{display:flex;}
+.detail{background:var(--wh);border-radius:var(--r-lg);max-width:940px;width:100%;padding:var(--sp4);position:relative;}
+.detail .close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--sf);border:1px solid var(--br);font-size:16px;color:var(--md);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.detail .close:hover{border-color:var(--gold);color:var(--gold);}
+.dh{display:flex;align-items:center;gap:var(--sp2);margin-bottom:6px;}
+.dh .sn{font-size:14px;font-weight:900;color:var(--gold);background:var(--gl);border-radius:var(--r-sm);padding:3px 10px;}
+.dh .st{font-size:19px;font-weight:900;}
+.dh .flowtag{font-size:8px;font-weight:700;color:#fff;background:var(--gold);padding:4px 12px;letter-spacing:1px;border-radius:var(--r-pill);margin-left:auto;white-space:nowrap;}
+.dex{font-size:10px;color:var(--mu);font-weight:300;margin-bottom:var(--sp3);}
+.dex b{color:var(--md);font-weight:700;}
+.dsec-h{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--gold);margin:var(--sp3) 0 var(--sp2);display:flex;align-items:center;gap:6px;}
+.dsec-h::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);}
+
+/* フロー領域（参考図のコンポーネント流用） */
+.flowbox{border:1px solid var(--bl);border-radius:var(--r-md);background:var(--sf);padding:var(--sp3) var(--sp2);}
+.node{background:#fff;border:1px solid var(--br);border-top:3px solid #D0CCC4;border-radius:var(--r-md);padding:var(--sp2) calc(var(--sp2) + 3px);display:flex;flex-direction:column;gap:5px;min-width:0;}
+.node .nh{font-size:8px;font-weight:700;letter-spacing:1.5px;color:var(--mu);}
+.node .nt{font-size:13px;font-weight:900;color:var(--bk);line-height:1.25;}
+.node .nd{font-size:9px;color:var(--md);line-height:1.6;font-weight:300;}
+.node.core{border-top-color:var(--gold);background:var(--gl);border-color:var(--gb);}
+.node.core .nh{color:var(--gold);}
+.node.ext{border-style:dashed;border-top-style:solid;background:var(--sf);}
+.node.ext .nh{color:var(--gold);}
+.node.dark{background:var(--bk);border-color:var(--bk);border-top-color:var(--gold);}
+.node.dark .nh{color:#bdb9b0;}.node.dark .nt{color:#fff;}.node.dark .nd{color:#cfcbc2;}
+.extpill{display:inline-block;font-size:7px;font-weight:700;color:#fff;background:var(--mu);padding:2px 8px;border-radius:var(--r-pill);align-self:flex-start;}
+.arr{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 5px;}
+.arr .g{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--gl);color:var(--gold);font-size:15px;font-weight:900;}
+.arr .l{font-size:7px;color:var(--mu);margin-top:4px;}
+.row{display:flex;align-items:stretch;gap:0;}
+.row.center{align-items:center;}
+.row.fill{align-items:stretch;min-height:240px;}
+.row.fill .node{justify-content:center;}
+.ring{position:relative;height:330px;}
+.ring .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:160px;height:160px;border-radius:50%;background:var(--gl);border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.ring .center .ct{font-size:10px;font-weight:900;}.ring .center .cv{font-size:17px;font-weight:900;color:var(--gold);line-height:1.1;}.ring .center .cs{font-size:7px;color:var(--md);font-weight:300;}
+.ring .npos{position:absolute;width:170px;transform:translate(-50%,-50%);}
+.ring .cyc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:14px;color:var(--gold);font-weight:900;}
+.funnel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp1);}
+.funnel .seg{background:var(--bk);color:#fff;text-align:center;padding:12px 0;font-size:12px;font-weight:700;border-radius:var(--r-md);}
+.funnel .seg .s{font-size:8px;font-weight:300;color:#cfcbc2;display:block;margin-top:2px;}
+.twoside{display:flex;align-items:stretch;justify-content:center;gap:0;min-height:260px;}
+.sidecol{display:flex;flex-direction:column;justify-content:center;gap:var(--sp2);flex:1;}
+.sidehd{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--md);text-align:center;background:var(--sf);border-radius:var(--r-pill);padding:4px 0;}
+.sidecol .node{flex:1;justify-content:center;}
+.platform{align-self:center;width:190px;height:190px;border-radius:var(--r-lg);background:var(--bk);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:var(--sp1);flex-shrink:0;}
+.platform .pt{font-size:13px;font-weight:900;}.platform .pv{font-size:9px;color:#cfcbc2;font-weight:300;line-height:1.7;}
+.bidir{display:flex;flex-direction:column;align-items:center;justify-content:center;width:46px;}
+.bidir .ic{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--gl);color:var(--gold);font-weight:900;}
+.bidir .bl{font-size:6px;color:var(--mu);writing-mode:vertical-rl;margin-top:4px;}
+.steps{display:flex;flex-direction:column;gap:var(--sp1);}
+.step{display:flex;gap:11px;align-items:flex-start;font-size:10px;color:var(--md);line-height:1.65;}
+.step .num{width:20px;height:20px;flex-shrink:0;background:var(--gl);border-radius:50%;color:var(--gold);font-weight:900;font-size:9px;display:flex;align-items:center;justify-content:center;}
+.step b{color:var(--bk);}
+
+/* 特徴・魅力 */
+.appeal-row{display:flex;gap:var(--sp1);flex-wrap:wrap;}
+.appeal-c{flex:1;min-width:180px;background:var(--sf);border:1px solid var(--bl);border-radius:var(--r-md);padding:11px 14px;}
+.appeal-c .at{font-size:11px;font-weight:900;margin-bottom:4px;line-height:1.35;}
+.appeal-c .ad{font-size:9px;color:var(--md);line-height:1.7;font-weight:300;}
+
+/* 集めるべきデータ項目 */
+.dpts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:620px){.dpts{grid-template-columns:1fr;}}
+.dpt{display:flex;gap:9px;align-items:flex-start;background:var(--wh);border:1px solid var(--bl);border-radius:var(--r-sm);padding:9px 12px;}
+.dpt .chk{width:16px;height:16px;flex-shrink:0;border:1.5px solid var(--gold);border-radius:5px;color:var(--gold);font-size:10px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.dpt .dptt{font-size:10px;color:var(--dk);line-height:1.55;}
+
+.foot{max-width:1120px;margin:0 auto;padding:0 var(--sp4) 40px;font-size:9px;color:var(--mu);font-weight:300;text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="hwrap">
+    <div class="brand">COMMERCEX M&A — 社内ツール</div>
+    <div class="htitle">IM アーキタイプ辞典</div>
+    <div class="hsub">企業概要書（IM）の業態アーキタイプを選ぶ・調べる。型 → フロー → 特徴 → 集めるべきデータ。</div>
+    <div class="controls">
+      <label class="search"><span class="ic">⌕</span><input id="q" type="text" placeholder="検索：業態・該当例・タグ（例：アパレル、トレカ、SaaS、輸入…）"></label>
+      <button class="clear-btn" id="clear">クリア</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="intro" id="intro">
+    <h2>使い方 — 物販は「3軸」で型が決まる</h2>
+    <p>案件の業態を、まず<b>収益モデルの大分類</b>（物販／SaaS／支援／プラットフォーム／多拠点／複合）で選び、物販なら<b>下の3軸</b>でサブタイプ（物-1〜7）を確定する。チャネル（自社EC/Amazon/楽天…）は<b>型ではなく属性</b>として構成比で扱う。複数事業は「複合（HY）」を参照。</p>
+    <div class="axes">
+      <div class="ax"><div class="axt">軸1 モノの源泉</div><div class="axd">自社製造／ファブレス／仕入販売／輸入(独占)／買取・再生 ＝ フロー左端が変わる</div></div>
+      <div class="ax"><div class="axt">軸2 流通・販売先</div><div class="axd">卸(BtoB)／直販・小売(BtoC)／製造小売(SPA) ＝ 卸ノードの有無が変わる</div></div>
+      <div class="ax"><div class="axt">軸3 チャネル（属性）</div><div class="axd">自社EC・Amazon・楽天・Yahoo!・実店舗・卸先 ＝ 販売ノードに構成比で差し込む</div></div>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none;">該当する型がありません。検索条件をクリアしてください。</div>
+</main>
+
+<div class="overlay" id="overlay"><div class="detail" id="detail"></div></div>
+
+<footer class="foot">CommerceX M&A 社内資料｜各ノード・特徴・データ項目はテンプレートのサンプル。実データは案件DB／面談記録から差し込む。顧客名等の業務データは記載しない。</footer>
+
+<script>
+const FAMILIES = [
+  {key:'all', label:'すべて'},
+  {key:'物販', label:'物販ファミリー'},
+  {key:'SaaS', label:'SaaS・サブスク'},
+  {key:'支援', label:'サービス・支援'},
+  {key:'PF', label:'プラットフォーム'},
+  {key:'多拠点', label:'多拠点展開'},
+  {key:'複合', label:'複合（ハイブリッド）'},
+];
+
+// role: '', 'core', 'ext', 'dark' ; pill: optional ; after: arrow label
+const A = [
+  { id:'物-1', name:'ファブレスD2C／自社ブランドEC', fam:'物販', famLabel:'物販ファミリー', flowtag:'★最頻出', feat:true,
+    one:'企画＋委託製造＋直販。卸を介さず自社EC/モールで売る、最頻出の型。',
+    ex:'健康食品・コスメ・雑貨の自社ブランド', src:'ファブレス', dist:'直販', tags:['ファブレス','直販','D2C','EC','アパレルEC'],
+    flow:{type:'linear', nodes:[
+      {nh:'PLAN / BRAND',nt:'企画・ブランド',nd:'商品企画・SKU / ブランド世界観・価格設計',role:'core',after:'委託'},
+      {nh:'OEM / ODM',nt:'委託製造',nd:'海外/国内工場（中国等）/ 自社工場は持たない',role:'ext',pill:'外部委託',after:'納品'},
+      {nh:'STOCK',nt:'在庫・物流',nd:'3PL/自社倉庫・在庫回転',after:'直販'},
+      {nh:'CHANNELS',nt:'自社EC／モール',nd:'自社EC・Amazon・楽天（構成比で差し込み）',after:''},
+      {nh:'CUSTOMER',nt:'顧客',nd:'新規/リピート・LTV・定期比率',role:'dark'} ]},
+    appeal:[ ['高粗利・身軽な経営','自社工場を持たず企画に集中し、卸を介さない直販のため中間マージンが乗らず高粗利。'],
+      ['積み上がる顧客基盤','リピート・定期購入のストック型売上が土台。顧客データを蓄積しLTVを伸ばしやすい。'],
+      ['横展開のしやすさ','委託製造ゆえ新商品・新ブランドの立ち上げが速く、買い手のポートフォリオに乗せやすい。'] ],
+    data:['商品企画方針・主力SKU数','ブランドコンセプト・価格帯','OEM委託先と発注条件・MOQ','在庫水準・3PL構成','チャネル別売上構成比（自社EC/Amazon/楽天）','リピート率・定期比率・LTV','広告費・ROAS・CPA','粗利率'] },
+
+  { id:'物-2', name:'SPA（製造小売）', fam:'物販', famLabel:'物販ファミリー', flowtag:'垂直統合',
+    one:'企画から小売まで自社で一気通貫。卸を介さない垂直統合モデル。',
+    ex:'アパレルSPA・製造小売', src:'自社/委託製造', dist:'製造小売', tags:['SPA','垂直統合','製造小売','アパレル','直営'],
+    flow:{type:'linear', nodes:[
+      {nh:'PLAN',nt:'企画・MD',nd:'商品企画・MD / シーズン設計',role:'core',after:''},
+      {nh:'PRODUCTION',nt:'製造（自社/委託）',nd:'自社工場 or OEM / 原価コントロール',after:''},
+      {nh:'STOCK',nt:'在庫',nd:'在庫消化率・値引きロス',after:''},
+      {nh:'OWN RETAIL',nt:'自社小売',nd:'直営店舗＋自社EC（卸なし／全て自社）',role:'core',after:''},
+      {nh:'CUSTOMER',nt:'顧客',nd:'店舗/EC会員・客単価・リピート',role:'dark'} ]},
+    appeal:[ ['垂直統合の高粗利','企画から小売まで一気通貫で価格決定力が強く、中間マージンが発生せず利益率が高い。'],
+      ['ブランドと顧客接点を自社保有','店舗・ECで顧客と直接つながり、購買データとファンを資産化できる。'],
+      ['多店舗・EC化の伸びしろ','再現性ある出店とEC強化で明快な成長ストーリーを描ける。'] ],
+    data:['企画/MD体制','製造形態（自社工場 or 委託）・原価','在庫消化率・値引きロス','直営店舗数・立地・坪効率','EC化率・会員数','客単価・リピート','既存店成長・出店計画'] },
+
+  { id:'物-3', name:'メーカー（自社製造）', fam:'物販', famLabel:'物販ファミリー', flowtag:'線形バリューチェーン',
+    one:'自社工場で製造し卸 or 直販。製造設備と取引基盤が価値の源泉。',
+    ex:'食品製造・部品メーカー・OEM受託', src:'自社製造', dist:'卸/直販', tags:['メーカー','自社製造','製造業','OEM受託','卸'],
+    flow:{type:'linear', nodes:[
+      {nh:'SUPPLY',nt:'原材料・仕入',nd:'主要仕入先・調達国 / 単価・発注ロット',after:'調達'},
+      {nh:'PRODUCTION',nt:'製造・加工（自社工場）',nd:'設備・生産能力 / 稼働率・歩留り',role:'core',after:'生産'},
+      {nh:'STOCK',nt:'在庫・物流',nd:'倉庫・回転率',after:'出荷'},
+      {nh:'SALES',nt:'卸・直販',nd:'主要販売先・取引条件',after:''},
+      {nh:'CUSTOMER',nt:'取引先・顧客',nd:'継続取引基盤・顧客集中度',role:'dark'} ]},
+    appeal:[ ['製造設備という参入障壁','自社の生産能力と品質は模倣されにくく、価格・納期で優位に立てる。'],
+      ['安定した取引基盤','継続取引の法人顧客がストック的な売上を生み、収益の予見性が高い。'],
+      ['内製化シナジー','買い手が自社製品の製造機能を取り込める。垂直統合の受け皿。'] ],
+    data:['主要仕入先・調達国','製造設備・生産能力・稼働率','原価構造（材料/労務/外注）','主要販売先・取引条件・集中度','在庫回転','粗利率'] },
+
+  { id:'物-4', name:'小売・物販（仕入販売）', fam:'物販', famLabel:'物販ファミリー', flowtag:'製造非関与',
+    one:'製造・企画を持たず、仕入れて複数チャネルで売る。仕入力とチャネル運用が資産。',
+    ex:'セレクトEC・物販小売・型番商品販売', src:'仕入販売', dist:'直販・小売', tags:['小売','仕入販売','物販','EC','せどり'],
+    flow:{type:'linear', nodes:[
+      {nh:'BUYING',nt:'仕入・バイイング',nd:'仕入先・原価交渉 / 品揃え・型番選定',role:'core',after:''},
+      {nh:'STOCK',nt:'在庫・物流',nd:'在庫水準・回転 / 欠品・過剰のバランス',after:'販売'},
+      {nh:'CHANNELS',nt:'販売チャネル',nd:'自社EC・Amazon・楽天・店舗（構成比で差し込み）',after:''},
+      {nh:'CUSTOMER',nt:'顧客',nd:'新規/リピート・客単価',role:'dark'} ]},
+    appeal:[ ['軽い在庫モデルで再現性','製造を持たず仕入と販売運用に集中するため、オペレーションが標準化しやすく引き継ぎやすい。'],
+      ['マルチチャネル運用力','複数モール・自社ECを横断して売り切る販売ノウハウが資産になる。'],
+      ['即戦力の売上','既存の販売チャネルと商流をそのまま引き継げ、買収直後から売上に貢献する。'] ],
+    data:['主要仕入先・仕入条件・原価率','取扱SKU・品揃え方針','チャネル別売上構成','在庫回転・欠品率','客単価・リピート','粗利率'] },
+
+  { id:'物-5', name:'卸・商社（BtoB流通）', fam:'物販', famLabel:'物販ファミリー', flowtag:'BtoB流通',
+    one:'仕入れて法人（小売店等）に卸す。取引先網・与信・物流機能が価値。',
+    ex:'BtoB卸・専門商社', src:'仕入販売', dist:'卸', tags:['卸','商社','BtoB','流通','与信'],
+    flow:{type:'linear', nodes:[
+      {nh:'SOURCING',nt:'仕入',nd:'メーカー・海外仕入 / 仕入条件・建値',after:''},
+      {nh:'STOCK',nt:'在庫・物流',nd:'在庫・配送機能 / 回転・欠品',after:'卸'},
+      {nh:'WHOLESALE',nt:'卸・営業',nd:'取引先網・営業力 / 取引条件・与信管理',role:'core',after:''},
+      {nh:'B2B CUSTOMER',nt:'取引先（法人）',nd:'小売店・事業者 / 取引先集中度',role:'dark'} ]},
+    appeal:[ ['取引先網という無形資産','長年築いた法人取引関係が、新規参入を阻む堀として機能する。'],
+      ['安定的なリピート受注','BtoBの継続発注により売上が読みやすく、キャッシュフローが安定する。'],
+      ['物流・与信機能','仕入〜配送〜与信を担う機能が、買い手のサプライチェーンを補完する。'] ],
+    data:['主要取引先・集中度','仕入先・建値・リベート構造','与信・回収サイト・貸倒れ','物流/配送機能','在庫回転','粗利率（薄利）'] },
+
+  { id:'物-6', name:'リユース・リコマース', fam:'物販', famLabel:'物販ファミリー', flowtag:'循環ループ',
+    one:'買取で仕入れ、査定・真贋を経て販売する循環型。目利き力が利益の源泉。',
+    ex:'トレカ・中古ブランド・リユース', src:'買取・再生', dist:'直販・小売', tags:['リユース','中古','トレカ','買取','査定','リコマース'],
+    flow:{type:'ring', center:{ct:'利益を再投資',cv:'在庫回転',cs:'買取↔販売の<br>スプレッド最大化'},
+      nodes:[ {nh:'① SOURCING',nt:'買取・仕入',nd:'店頭/出張/EC買取・せどり'},
+        {nh:'② CORE VALUE',nt:'査定・真贋',nd:'鑑定力・値付け・状態評価',role:'core'},
+        {nh:'③ STOCK',nt:'在庫・陳列',nd:'カテゴリ別在庫・回転日数'},
+        {nh:'④ SELL',nt:'販売',nd:'店舗/自社EC/オークション'} ]},
+    appeal:[ ['査定・真贋という専門性','模倣困難な目利き力が高粗利と顧客の信頼を生む、最大の競争優位。'],
+      ['独自の仕入（買取）チャネル','在庫を外部仕入れに頼らず買取で確保するため、原価と利益率をコントロールできる。'],
+      ['資本効率の高い循環','在庫回転を効かせ、少ない運転資本で事業を回せる構造。'] ],
+    data:['買取チャネル構成・仕入安定性','査定/真贋体制・人材','カテゴリ別在庫・回転日数','sell-through率','販売チャネル（店舗/EC/オークション）','カテゴリ別粗利'] },
+
+  { id:'物-7', name:'輸入総代理店・ブランド総代理', fam:'物販', famLabel:'物販ファミリー', flowtag:'独占販売権が中核',
+    one:'海外ブランドの日本独占販売権が中核資産。卸＋直販のハイブリッド販路。',
+    ex:'海外ブランドの日本総代理店', src:'輸入（独占仕入）', dist:'卸＋直販', tags:['輸入','総代理店','独占販売権','代理店','海外ブランド'],
+    flow:{type:'linear', nodes:[
+      {nh:'OVERSEAS BRAND',nt:'海外ブランド',nd:'本国メーカー / 商品供給元',role:'ext',pill:'本国',after:'契約'},
+      {nh:'EXCLUSIVE RIGHT',nt:'総代理店契約',nd:'日本独占販売権 / 契約残存・更新条件',role:'core',after:'輸入'},
+      {nh:'IMPORT / STOCK',nt:'輸入・在庫',nd:'通関・為替 / 在庫・物流',after:''},
+      {nh:'HYBRID SALES',nt:'卸＋直販',nd:'小売店へ卸＋自社EC/店舗（構成比で差し込み）',after:''},
+      {nh:'CUSTOMER',nt:'顧客',nd:'小売店・エンド顧客',role:'dark'} ]},
+    appeal:[ ['独占販売権という堀','日本市場での独占的地位が競合を排除する。確立されたブランドを育成リスクなく扱える。'],
+      ['卸＋直販の両輪','販路が分散し特定チャネル依存が小さい。安定した卸と高粗利の直販を両取りできる。'],
+      ['※前提＝契約の維持','独占権の残存年数・更新条件・チェンジオブコントロール条項が事業価値の生命線（DDの肝）。'] ],
+    data:['総代理店契約書（独占性・地域・残存年数・更新条件）','チェンジオブコントロール条項の有無','本国メーカーとの関係・依存度','取扱ブランドのポートフォリオ','卸/直販の構成比','為替・通関・在庫','粗利率'] },
+
+  { id:'D', name:'SaaS・サブスク', fam:'SaaS', famLabel:'SaaS・サブスク', flowtag:'フライホイール',
+    one:'継続課金（MRR）の積み上げと低解約が価値。獲得→定着→継続→拡大の循環。',
+    ex:'業務SaaS・サブスクサービス', src:'—', dist:'—', tags:['SaaS','サブスク','MRR','ARR','ストック収益'],
+    flow:{type:'ring', center:{ct:'積み上がる',cv:'ARR / MRR',cs:'解約を抑え<br>純増を最大化'},
+      nodes:[ {nh:'① ACQUIRE',nt:'獲得',nd:'マーケ/IS・CAC'},
+        {nh:'② ONBOARD',nt:'定着・活用',nd:'オンボーディング'},
+        {nh:'③ RETAIN',nt:'継続課金',nd:'低解約＝MRRの土台',role:'core'},
+        {nh:'④ EXPAND',nt:'拡大（NRR）',nd:'アップセル→次の獲得へ'} ]},
+    appeal:[ ['ストック収益の安定性','解約が低ければMRRが積み上がり、売上が高く予測可能。事業価値が評価されやすい。'],
+      ['高利益率と拡張性','追加コストを抑えて顧客を増やせるスケールメリットがあり、利益率の伸びが大きい。'],
+      ['拡大の余地（NRR）','既存顧客内のアップセルで非線形に成長でき、買い手の成長戦略に乗せやすい。'] ],
+    data:['ARR/MRR推移・成長率','月次New/Churn','解約率・NRR','LTV/CAC・回収月数','顧客数・単価','粗利率・Rule of 40'] },
+
+  { id:'E', name:'サービス・支援/代理店', fam:'支援', famLabel:'サービス・支援', flowtag:'ファネル＋継続関係',
+    one:'顧客との継続関係と人の生産性が価値。EC支援・広告代理・コンサルはここ。',
+    ex:'EC支援・広告代理・コンサル・受託開発', src:'—', dist:'—', tags:['支援','代理店','EC支援','コンサル','受託','広告代理'],
+    flow:{type:'funnel', segs:[ {t:'リード獲得',s:'紹介・問い合わせ・アウトバウンド',w:'100%'},
+        {t:'商談・受注',s:'提案・受注率',w:'80%'},
+        {t:'デリバリー（人月）',s:'稼働・品質',w:'62%',gold:true} ],
+      recur:{nh:'RECURRING RELATION',nt:'継続契約・追加受注',nd:'月次顧問／運用代行 / アップセル・解約防止 / 顧客LTVの最大化'} },
+    appeal:[ ['継続関係によるストック性','顧問・運用代行で売上が継続的に積み上がり、フロー型より収益が安定する。'],
+      ['人の専門性が参入障壁','蓄積したノウハウと実績は模倣されにくく、価格競争に巻き込まれにくい。'],
+      ['顧客基盤の転用余地','既存顧客に物販やSaaS等をクロスセルできる、買い手にとっての拡張資産。'] ],
+    data:['顧客数・継続率・平均継続月数','顧客単価（月次/プロジェクト）','受注残（backlog）','一人当たり売上・粗利・稼働率','顧客集中度（TOP顧客%）','サービス内容・提供体制'] },
+
+  { id:'F', name:'プラットフォーム/マッチング', fam:'PF', famLabel:'プラットフォーム', flowtag:'両面ネットワーク',
+    one:'供給と需要を媒介し手数料（テイクレート）を得る。両side数の厚みが堀。',
+    ex:'仲介・マーケットプレイス・マッチング', src:'—', dist:'—', tags:['プラットフォーム','マッチング','マーケットプレイス','GMV','仲介'],
+    flow:{type:'twoside',
+      supply:[ {nh:'SUPPLY',nt:'出品者・提供者',nd:'登録数・稼働率・継続出品'}, {nh:'INVENTORY',nt:'在庫／供給量',nd:'掲載数・充足度'} ],
+      platform:{pt:'プラットフォーム',pv:'マッチング・決済<br>テイクレート（手数料）<br>GMV を媒介'},
+      demand:[ {nh:'DEMAND',nt:'購入者・利用者',nd:'アクティブ数・リピート'}, {nh:'TRANSACTION',nt:'取引・流通',nd:'成約率・客単価'} ] },
+    appeal:[ ['ネットワーク効果の堀','両サイドが厚くなるほど価値が高まり、後発の参入が困難になる構造的優位。'],
+      ['在庫を持たない高収益','手数料（テイクレート）モデルで身軽かつ高粗利。スケール時の利益率が高い。'],
+      ['GMV連動の成長','流通額の拡大がそのまま収益成長につながり、伸びが見えやすい。'] ],
+    data:['GMV・流通額推移','テイクレート','供給side数・需要side数・比率','アクティブ率・リテンション','成約率・客単価','収益化構造'] },
+
+  { id:'G', name:'多拠点展開', fam:'多拠点', famLabel:'多拠点展開', flowtag:'展開様式オーバーレイ',
+    one:'収益モデルでなく“展開様式”。物販小売（物-2/物-4）やサービス（E）に重ねて使う。',
+    ex:'飲食チェーン・小売多店舗・サービス拠点', src:'overlay', dist:'overlay', tags:['多拠点','店舗','チェーン','出店','ユニットエコノミクス'],
+    flow:{type:'linear', nodes:[
+      {nh:'UNIT',nt:'1ユニットモデル',nd:'店舗P&L・坪効率 / 客単価・投資回収',role:'core',after:'再現'},
+      {nh:'ROLL-OUT',nt:'× N 拠点展開',nd:'標準化された出店オペレーション',after:'余地'},
+      {nh:'WHITE SPACE',nt:'出店余地',nd:'未出店エリア＝成長ドライバー',role:'ext'} ]},
+    appeal:[ ['再現性ある成長','黒字ユニットの横展開で売上を積み増せる、計画の立てやすい成長モデル。'],
+      ['出店余地という伸びしろ','未出店エリアが明確な成長ドライバーとなり、買い手に上振れ余地を示せる。'],
+      ['オペレーション標準化','仕組み化された運営が、買い手の多拠点展開力を補完する資産になる。'] ],
+    data:['拠点数・拠点別P&L','黒字店比率','坪効率・客単価','既存店成長率・季節性','出店余地・候補エリア','投資回収月数'] },
+
+  { id:'HY', name:'ハイブリッド（複数事業）', fam:'複合', famLabel:'複合（ハイブリッド）', flowtag:'事業セグメント',
+    one:'「支援＋物販」「SaaS＋物販」等。1型に寄せず主従を決め、セグメント併記＋シナジーで表現。',
+    ex:'複数事業を持つ会社', src:'—', dist:'—', tags:['複合','ハイブリッド','複数事業','セグメント','シナジー'],
+    flow:{type:'steps', steps:[
+      ['1','<b>主従を数字で決める</b>：売上 or 利益構成比で、譲渡対象の中核事業を「主アーキタイプ」に。'],
+      ['2','<b>主で骨格を組む</b>：事業フロー図・特徴欄は主事業のものを採用。'],
+      ['3','<b>「事業セグメント」ページを追加</b>：各事業を該当アーキタイプの簡易フロー＋セグメント別売上/利益で併記。'],
+      ['4','<b>シナジーを明記</b>：事業間の関係（例：支援で培ったマーケ力を自社物販に転用）＝バイヤー最注目。'] ]},
+    appeal:[ ['本質で主を選ぶ','「SaaS＋物販」で利益が小さくてもARR成長が買う価値ならSaaSを主に。利益額でなく価値で判断。'],
+      ['セグメント別に見せる','複合SMEはセグメント別の売上・利益で透明に。1型に押し込むと魅力が埋もれる。'],
+      ['シナジーが差別化','事業間の相互送客・ノウハウ転用は、単独事業にない買い手メリット。'] ],
+    data:['事業セグメント別の売上・利益構成比','各事業の該当アーキタイプ','主従の根拠（中核事業の特定）','事業間シナジーの具体','譲渡対象範囲（全事業 or 一部）'] },
+];
+
+/* ---------- フロー描画 ---------- */
+function nodeHTML(n){
+  const cls = 'node' + (n.role==='core'?' core':n.role==='ext'?' ext':n.role==='dark'?' dark':'');
+  const pill = n.pill ? '<span class="extpill">'+n.pill+'</span>' : '';
+  return '<div class="'+cls+'" style="flex:1;">'+pill+'<div class="nh">'+n.nh+'</div><div class="nt">'+n.nt+'</div>'+(n.nd?'<div class="nd">'+n.nd+'</div>':'')+'</div>';
+}
+function arrowHTML(label){ return '<div class="arr"><div class="g">→</div>'+(label?'<div class="l">'+label+'</div>':'')+'</div>'; }
+function renderLinear(f){
+  let h='<div class="row center fill">';
+  f.nodes.forEach((n,i)=>{ h+=nodeHTML(n); if(i<f.nodes.length-1) h+=arrowHTML(n.after); });
+  return h+'</div>';
+}
+function renderRing(f){
+  const pos=['left:50%;top:11%;','left:88%;top:50%;','left:50%;top:89%;','left:12%;top:50%;'];
+  let h='<div class="ring"><div class="center"><div class="ct">'+f.center.ct+'</div><div class="cv">'+f.center.cv+'</div><div class="cs">'+f.center.cs+'</div></div>';
+  f.nodes.forEach((n,i)=>{ const cls='npos node'+(n.role==='core'?' core':''); h+='<div class="'+cls+'" style="'+pos[i]+'"><div class="nh">'+n.nh+'</div><div class="nt">'+n.nt+'</div><div class="nd">'+n.nd+'</div></div>'; });
+  h+='<div class="cyc" style="left:73%;top:23%;">↘</div><div class="cyc" style="left:73%;top:77%;">↙</div><div class="cyc" style="left:27%;top:77%;">↖</div><div class="cyc" style="left:27%;top:23%;">↗</div>';
+  return h+'</div>';
+}
+function renderFunnel(f){
+  let h='<div class="row" style="gap:21px;align-items:stretch;min-height:240px;"><div class="funnel" style="flex:1;">';
+  f.segs.forEach((s,i)=>{ h+='<div class="seg" style="width:'+s.w+';'+(s.gold?'background:var(--gold);':'')+'">'+s.t+' <span class="s">'+s.s+'</span></div>'; if(i<f.segs.length-1) h+='<div class="arr"><div class="g" style="transform:rotate(90deg)">→</div></div>'; });
+  h+='</div><div class="arr"><div class="g">→</div><div class="l">継続化</div></div>';
+  h+='<div class="node core" style="flex:0.9;justify-content:center;"><div class="nh">'+f.recur.nh+'</div><div class="nt">'+f.recur.nt+'</div><div class="nd">'+f.recur.nd+'</div></div></div>';
+  return h;
+}
+function renderTwoside(f){
+  const col=(hd,arr)=>{ let s='<div class="sidecol"><div class="sidehd">'+hd+'</div>'; arr.forEach(n=>{ s+='<div class="node"><div class="nh">'+n.nh+'</div><div class="nt">'+n.nt+'</div><div class="nd">'+n.nd+'</div></div>'; }); return s+'</div>'; };
+  return '<div class="twoside">'+col('供給サイド',f.supply)
+    +'<div class="bidir"><div class="ic">⇄</div><div class="bl">送客・手数料</div></div>'
+    +'<div class="platform"><div class="pt">'+f.platform.pt+'</div><div class="pv">'+f.platform.pv+'</div></div>'
+    +'<div class="bidir"><div class="ic">⇄</div><div class="bl">利用・購入</div></div>'
+    +col('需要サイド',f.demand)+'</div>';
+}
+function renderSteps(f){
+  let h='<div class="steps">';
+  f.steps.forEach(s=>{ h+='<div class="step"><span class="num">'+s[0]+'</span><div>'+s[1]+'</div></div>'; });
+  return h+'</div>';
+}
+function renderFlow(f){
+  if(f.type==='linear') return renderLinear(f);
+  if(f.type==='ring') return renderRing(f);
+  if(f.type==='funnel') return renderFunnel(f);
+  if(f.type==='twoside') return renderTwoside(f);
+  if(f.type==='steps') return renderSteps(f);
+  return '';
+}
+
+/* ---------- カード / フィルタ ---------- */
+let activeFam='all', query='';
+const grid=document.getElementById('grid'), countEl=document.getElementById('count'), emptyEl=document.getElementById('empty');
+
+function buildTabs(){
+  const t=document.getElementById('tabs');
+  t.innerHTML = FAMILIES.map(f=>{ const n = f.key==='all'?A.length:A.filter(a=>a.fam===f.key).length;
+    return '<div class="tab'+(f.key==='all'?' on':'')+'" data-fam="'+f.key+'">'+f.label+'<span class="ct">'+n+'</span></div>'; }).join('');
+  t.querySelectorAll('.tab').forEach(el=>el.onclick=()=>{ activeFam=el.dataset.fam; t.querySelectorAll('.tab').forEach(x=>x.classList.remove('on')); el.classList.add('on'); render(); });
+}
+function match(a){
+  if(activeFam!=='all' && a.fam!==activeFam) return false;
+  if(!query) return true;
+  const q=query.toLowerCase();
+  return (a.id+a.name+a.one+a.ex+a.tags.join(' ')+a.src+a.dist).toLowerCase().includes(q);
+}
+function render(){
+  const list=A.filter(match);
+  countEl.textContent=list.length+' 型を表示';
+  emptyEl.style.display=list.length?'none':'block';
+  grid.innerHTML=list.map(a=>'<div class="card'+(a.feat?' feat':'')+'" data-id="'+a.id+'">'
+    +'<div class="crow"><span class="cid">'+a.id+'</span><span class="cfam">'+a.famLabel+'</span></div>'
+    +'<div class="cname">'+a.name+'</div><div class="cone">'+a.one+'</div>'
+    +'<div class="ctags">'+a.tags.slice(0,4).map(t=>'<span class="ctag">'+t+'</span>').join('')+'</div></div>').join('');
+  grid.querySelectorAll('.card').forEach(c=>c.onclick=()=>openDetail(c.dataset.id));
+}
+
+/* ---------- 詳細モーダル ---------- */
+const overlay=document.getElementById('overlay'), detail=document.getElementById('detail');
+function openDetail(id){
+  const a=A.find(x=>x.id===id); if(!a) return;
+  const meta = (a.src!=='—'&&a.src!=='overlay') ? '　／　源泉＝<b>'+a.src+'</b>　流通＝<b>'+a.dist+'</b>' : '';
+  detail.innerHTML =
+    '<button class="close" id="closeBtn">×</button>'
+    +'<div class="dh"><span class="sn">'+a.id+'</span><span class="st">'+a.name+'</span><span class="flowtag">'+a.flowtag+'</span></div>'
+    +'<div class="dex">該当例：<b>'+a.ex+'</b>'+meta+'</div>'
+    +'<div class="dsec-h">事業フロー</div><div class="flowbox">'+renderFlow(a.flow)+'</div>'
+    +'<div class="dsec-h">このビジネスモデルの特徴・魅力（バイヤー訴求ポイント）</div>'
+    +'<div class="appeal-row">'+a.appeal.map(p=>'<div class="appeal-c"><div class="at">'+p[0]+'</div><div class="ad">'+p[1]+'</div></div>').join('')+'</div>'
+    +'<div class="dsec-h">集めるべきデータ項目（ヒアリング/資料）</div>'
+    +'<div class="dpts">'+a.data.map(d=>'<div class="dpt"><span class="chk">✓</span><span class="dptt">'+d+'</span></div>').join('')+'</div>';
+  document.getElementById('closeBtn').onclick=closeDetail;
+  overlay.classList.add('on'); document.body.style.overflow='hidden';
+}
+function closeDetail(){ overlay.classList.remove('on'); document.body.style.overflow=''; }
+overlay.onclick=(e)=>{ if(e.target===overlay) closeDetail(); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDetail(); });
+
+/* ---------- 検索 ---------- */
+document.getElementById('q').addEventListener('input',e=>{ query=e.target.value.trim(); render(); });
+document.getElementById('clear').onclick=()=>{ query=''; activeFam='all'; document.getElementById('q').value=''; document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.fam==='all')); render(); };
+
+buildTabs(); render();
+</script>
+</body>
+</html>
